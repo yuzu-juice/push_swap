@@ -70,7 +70,7 @@ void	sort_more_than_five(t_stack *a, t_stack *b)
 	{
 		max_index_b = get_max_index(b->stack, b->top + 1);
 		min_index_b = get_min_index(b->stack, b->top + 1);
-		largest_lt_index_b = get_largest_number_index_lt(b->stack, b->top + 1, a->stack[a->top]);
+		largest_lt_index_b = get_largest_num_index_lt(b->stack, b->top + 1, a->stack[a->top]);
 		if (a->stack[a->top] >= b->stack[max_index_b] || a->stack[a->top] <= b->stack[min_index_b])
 		{
 			max = b->stack[max_index_b];
@@ -95,7 +95,7 @@ void	sort_more_than_five(t_stack *a, t_stack *b)
 	{
 		max_index_a = get_max_index(a->stack, a->top + 1);
 		min_index_a = get_min_index(a->stack, a->top + 1);
-		smallest_gt_index_a = get_smallest_number_index_gt(a->stack, a->top + 1, b->stack[b->top]);
+		smallest_gt_index_a = get_smallest_num_index_gt(a->stack, a->top + 1, b->stack[b->top]);
 		if (b->stack[b->top] >= a->stack[max_index_a] || b->stack[b->top] <= a->stack[min_index_a])
 		{
 			min = a->stack[min_index_a];
