@@ -46,7 +46,7 @@ void	sort_four(t_stack *stack_a, t_stack *stack_b);
 void	sort_more_than_five(t_stack *stack_a, t_stack *stack_b);
 int		get_max_index(int *stack, size_t size);
 int		get_min_index(int *stack, size_t size);
-int		get_largest_number_index_less_than(int *stack, size_t size, int target);
-int		get_smallest_number_index_more_than(int *stack, size_t size, int target);
+int		get_largest_number_index_lt(int *stack, size_t size, int target);
+int		get_smallest_number_index_gt(int *stack, size_t size, int target);
 
 #endif

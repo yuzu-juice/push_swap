@@ -59,8 +59,8 @@ void	sort_more_than_five(t_stack *stack_a, t_stack *stack_b)
 	int	min_index_b;
 	int	max_index_a;
 	int	min_index_a;
-	int	largest_less_than_index_b;
-	int	smallest_more_than_index_a;
+	int	largest_lt_index_b;
+	int	smallest_gt_index_a;
 	int	max;
 	int	min;
 
@@ -70,7 +70,7 @@ void	sort_more_than_five(t_stack *stack_a, t_stack *stack_b)
 	{
 		max_index_b = get_max_index(stack_b->stack, stack_b->top + 1);
 		min_index_b = get_min_index(stack_b->stack, stack_b->top + 1);
-		largest_less_than_index_b = get_largest_number_index_less_than(stack_b->stack, stack_b->top + 1, stack_a->stack[stack_a->top]);
+		largest_lt_index_b = get_largest_number_index_lt(stack_b->stack, stack_b->top + 1, stack_a->stack[stack_a->top]);
 		if (stack_a->stack[stack_a->top] >= stack_b->stack[max_index_b] || stack_a->stack[stack_a->top] <= stack_b->stack[min_index_b])
 		{
 			max = stack_b->stack[max_index_b];
@@ -80,7 +80,7 @@ void	sort_more_than_five(t_stack *stack_a, t_stack *stack_b)
 		}
 		else
 		{
-			max = stack_b->stack[largest_less_than_index_b];
+			max = stack_b->stack[largest_lt_index_b];
 			while (stack_b->stack[stack_b->top] != max)
 				rb(stack_b);
 			pb(stack_a, stack_b);
@@ -95,7 +95,7 @@ void	sort_more_than_five(t_stack *stack_a, t_stack *stack_b)
 	{
 		max_index_a = get_max_index(stack_a->stack, stack_a->top + 1);
 		min_index_a = get_min_index(stack_a->stack, stack_a->top + 1);
-		smallest_more_than_index_a = get_smallest_number_index_more_than(stack_a->stack, stack_a->top + 1, stack_b->stack[stack_b->top]);
+		smallest_gt_index_a = get_smallest_number_index_gt(stack_a->stack, stack_a->top + 1, stack_b->stack[stack_b->top]);
 		if (stack_b->stack[stack_b->top] >= stack_a->stack[max_index_a] || stack_b->stack[stack_b->top] <= stack_a->stack[min_index_a])
 		{
 			min = stack_a->stack[min_index_a];
@@ -105,7 +105,7 @@ void	sort_more_than_five(t_stack *stack_a, t_stack *stack_b)
 		}
 		else
 		{
-			min = stack_a->stack[smallest_more_than_index_a];
+			min = stack_a->stack[smallest_gt_index_a];
 			while (stack_a->stack[stack_a->top] != min)
 				ra(stack_a);
 			pa(stack_a, stack_b);

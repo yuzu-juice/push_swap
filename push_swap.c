@@ -57,7 +57,6 @@
 // 	ft_printf("\n\n-------------------------\n\n");
 // }
 
-
 static void	push_swap_sort(t_stack *stack_a, t_stack *stack_b)
 {
 	if (is_sorted(*stack_a))
@@ -73,7 +72,7 @@ static void	push_swap_sort(t_stack *stack_a, t_stack *stack_b)
 		sort_more_than_five(stack_a, stack_b);
 }
 
-static void normalize_stack(int *elements, t_stack *stack_a, size_t size)
+static void	normalize_stack(int *elements, t_stack *stack_a, size_t size)
 {
 	size_t	i;
 	size_t	j;
@@ -106,7 +105,6 @@ static void	push_swap_init(int *elements, size_t size, t_stack *stack_a, t_stack
 		return ;
 	stack_a->top = size - 1;
 	stack_b->top = -1;
-
 	i = 0;
 	while (i < size)
 	{
@@ -116,7 +114,7 @@ static void	push_swap_init(int *elements, size_t size, t_stack *stack_a, t_stack
 	normalize_stack(elements, stack_a, size);
 }
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
 	int		i;
 	int		elements[argc - 1];

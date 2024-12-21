@@ -46,7 +46,7 @@ int	get_min_index(int *stack, size_t size)
 	return (min_index);
 }
 
-int	get_largest_number_index_less_than(int *stack, size_t size, int target)
+int	get_largest_number_index_lt(int *stack, size_t size, int target)
 {
 	size_t	i;
 	size_t	index;
@@ -62,7 +62,7 @@ int	get_largest_number_index_less_than(int *stack, size_t size, int target)
 	return (index);
 }
 
-int	get_smallest_number_index_more_than(int *stack, size_t size, int target)
+int	get_smallest_number_index_gt(int *stack, size_t size, int target)
 {
 	size_t	i;
 	size_t	index;
