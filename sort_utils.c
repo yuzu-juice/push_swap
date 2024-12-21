@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-bool	is_sorted(t_stack stack)
+_Bool	is_sorted(t_stack stack)
 {
 	int	i;
 
@@ -20,10 +20,10 @@ bool	is_sorted(t_stack stack)
 	while (i < stack.top)
 	{
 		if (stack.stack[i] < stack.stack[i + 1])
-			return (false);
+			return (FALSE);
 		i++;
 	}
-	return (true);
+	return (TRUE);
 }
 
 void	sort_three(t_stack *stack)
@@ -36,24 +36,24 @@ void	sort_three(t_stack *stack)
 		sa(stack);
 }
 
-void	sort_four(t_stack *stack_a, t_stack *stack_b)
+void	sort_four(t_stack *a, t_stack *b)
 {
 	int	min_index;
 	int	i;
 
-	min_index = get_min_index(stack_a->stack, 4);
+	min_index = get_min_index(a->stack, 4);
 	i = 0;
-	while (i < stack_a->top - min_index)
+	while (i < a->top - min_index)
 	{
-		ra(stack_a);
+		ra(a);
 		i++;
 	}
-	pb(stack_a, stack_b);
-	sort_three(stack_a);
-	pa(stack_a, stack_b);
+	pb(a, b);
+	sort_three(a);
+	pa(a, b);
 }
 
-void	sort_more_than_five(t_stack *stack_a, t_stack *stack_b)
+void	sort_more_than_five(t_stack *a, t_stack *b)
 {
 	int	max_index_b;
 	int	min_index_b;
@@ -64,55 +64,55 @@ void	sort_more_than_five(t_stack *stack_a, t_stack *stack_b)
 	int	max;
 	int	min;
 
-	pb(stack_a, stack_b);
-	pb(stack_a, stack_b);
-	while (stack_a->top > 2)
+	pb(a, b);
+	pb(a, b);
+	while (a->top > 2)
 	{
-		max_index_b = get_max_index(stack_b->stack, stack_b->top + 1);
-		min_index_b = get_min_index(stack_b->stack, stack_b->top + 1);
-		largest_lt_index_b = get_largest_number_index_lt(stack_b->stack, stack_b->top + 1, stack_a->stack[stack_a->top]);
-		if (stack_a->stack[stack_a->top] >= stack_b->stack[max_index_b] || stack_a->stack[stack_a->top] <= stack_b->stack[min_index_b])
+		max_index_b = get_max_index(b->stack, b->top + 1);
+		min_index_b = get_min_index(b->stack, b->top + 1);
+		largest_lt_index_b = get_largest_number_index_lt(b->stack, b->top + 1, a->stack[a->top]);
+		if (a->stack[a->top] >= b->stack[max_index_b] || a->stack[a->top] <= b->stack[min_index_b])
 		{
-			max = stack_b->stack[max_index_b];
-			while (stack_b->stack[stack_b->top] != max)
-				rb(stack_b);
-			pb(stack_a, stack_b);
+			max = b->stack[max_index_b];
+			while (b->stack[b->top] != max)
+				rb(b);
+			pb(a, b);
 		}
 		else
 		{
-			max = stack_b->stack[largest_lt_index_b];
-			while (stack_b->stack[stack_b->top] != max)
-				rb(stack_b);
-			pb(stack_a, stack_b);
+			max = b->stack[largest_lt_index_b];
+			while (b->stack[b->top] != max)
+				rb(b);
+			pb(a, b);
 		}
-		max_index_b = get_max_index(stack_b->stack, stack_b->top + 1);
-		max = stack_b->stack[max_index_b];
-		while (stack_b->stack[stack_b->top] != max)
-			rb(stack_b);
+		max_index_b = get_max_index(b->stack, b->top + 1);
+		max = b->stack[max_index_b];
+		while (b->stack[b->top] != max)
+			rb(b);
 	}
-	sort_three(stack_a);
-	while (stack_b->top > -1)
+	sort_three(a);
+	while (b->top > -1)
 	{
-		max_index_a = get_max_index(stack_a->stack, stack_a->top + 1);
-		min_index_a = get_min_index(stack_a->stack, stack_a->top + 1);
-		smallest_gt_index_a = get_smallest_number_index_gt(stack_a->stack, stack_a->top + 1, stack_b->stack[stack_b->top]);
-		if (stack_b->stack[stack_b->top] >= stack_a->stack[max_index_a] || stack_b->stack[stack_b->top] <= stack_a->stack[min_index_a])
+		max_index_a = get_max_index(a->stack, a->top + 1);
+		min_index_a = get_min_index(a->stack, a->top + 1);
+		smallest_gt_index_a = get_smallest_number_index_gt(a->stack, a->top + 1, b->stack[b->top]);
+		if (b->stack[b->top] >= a->stack[max_index_a] || b->stack[b->top] <= a->stack[min_index_a])
 		{
-			min = stack_a->stack[min_index_a];
-			while (stack_a->stack[stack_a->top] != min)
-				ra(stack_a);
-			pa(stack_a, stack_b);
+			min = a->stack[min_index_a];
+			while (a->stack[a->top] != min)
+				ra(a);
+			pa(a, b);
 		}
 		else
 		{
-			min = stack_a->stack[smallest_gt_index_a];
-			while (stack_a->stack[stack_a->top] != min)
-				ra(stack_a);
-			pa(stack_a, stack_b);
+			min = a->stack[smallest_gt_index_a];
+			while (a->stack[a->top] != min)
+				ra(a);
+			pa(a, b);
 		}
-		min_index_a = get_min_index(stack_a->stack, stack_a->top + 1);
-		min = stack_a->stack[min_index_a];
-		while (stack_a->stack[stack_a->top] != min)
-			ra(stack_a);
+		min_index_a = get_min_index(a->stack, a->top + 1);
+		min = a->stack[min_index_a];
+		while (a->stack[a->top] != min)
+			ra(a);
 	}
 }

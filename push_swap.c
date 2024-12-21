@@ -12,44 +12,44 @@
 
 #include "push_swap.h"
 
-// static void	print_stack(t_stack *stack_a, t_stack *stack_b, size_t size)
+// static void	print_stack(t_stack *a, t_stack *b, size_t size)
 // {
 // 	size_t	i;
 // 	int		flag;
 
 // 	i = 0;
-// 	flag = true;
-// 	if (stack_a->top == -1)
-// 		ft_printf("stack_a is empty.\n");
+// 	flag = TRUE;
+// 	if (a->top == -1)
+// 		ft_printf("a is empty.\n");
 // 	while (i < size)
 // 	{
 // 		if (flag)
-// 			ft_printf("a[%u]: %d", i, stack_a->stack[i]);
+// 			ft_printf("a[%u]: %d", i, a->stack[i]);
 // 		else
 // 			ft_printf("a[%u]:", i);
-// 		if ((size_t)stack_a->top == i)
+// 		if ((size_t)a->top == i)
 // 		{
 // 			ft_printf(" <- top");
-// 			flag = false;
+// 			flag = FALSE;
 // 		}
 // 		ft_printf("\n");
 // 		i++;
 // 	}
 // 	ft_printf("\n");
-// 	if (stack_b->top == -1)
-// 		ft_printf("stack_b is empty.\n");
+// 	if (b->top == -1)
+// 		ft_printf("b is empty.\n");
 // 	i = 0;
-// 	flag = true;
+// 	flag = TRUE;
 // 	while (i < size)
 // 	{
 // 		if (flag)
-// 			ft_printf("b[%u]: %d", i, stack_b->stack[i]);
+// 			ft_printf("b[%u]: %d", i, b->stack[i]);
 // 		else
 // 			ft_printf("b[%u]:", i);
-// 		if ((size_t)stack_b->top == i)
+// 		if ((size_t)b->top == i)
 // 		{
 // 			ft_printf(" <- top");
-// 			flag = false;
+// 			flag = FALSE;
 // 		}
 // 		ft_printf("\n");
 // 		i++;
@@ -57,22 +57,22 @@
 // 	ft_printf("\n\n-------------------------\n\n");
 // }
 
-static void	push_swap_sort(t_stack *stack_a, t_stack *stack_b)
+static void	push_swap_sort(t_stack *a, t_stack *b)
 {
-	if (is_sorted(*stack_a))
+	if (is_sorted(*a))
 		return ;
-	if (stack_a->top == 1)
-		if (stack_a->stack[0] < stack_a->stack[1])
-			sa(stack_a);
-	if (stack_a->top == 2)
-		sort_three(stack_a);
-	if (stack_a->top == 3)
-		sort_four(stack_a, stack_b);
-	if (stack_a->top >= 4)
-		sort_more_than_five(stack_a, stack_b);
+	if (a->top == 1)
+		if (a->stack[0] < a->stack[1])
+			sa(a);
+	if (a->top == 2)
+		sort_three(a);
+	if (a->top == 3)
+		sort_four(a, b);
+	if (a->top >= 4)
+		sort_more_than_five(a, b);
 }
 
-static void	normalize_stack(int *elements, t_stack *stack_a, size_t size)
+static void	normalize_stack(int *elements, t_stack *a, size_t size)
 {
 	size_t	i;
 	size_t	j;
@@ -84,9 +84,9 @@ static void	normalize_stack(int *elements, t_stack *stack_a, size_t size)
 		j = 0;
 		while (j < size)
 		{
-			if (stack_a->stack[j] == elements[i])
+			if (a->stack[j] == elements[i])
 			{
-				stack_a->stack[j] = i;
+				a->stack[j] = i;
 				break ;
 			}
 			j++;
@@ -95,31 +95,31 @@ static void	normalize_stack(int *elements, t_stack *stack_a, size_t size)
 	}
 }
 
-static void	push_swap_init(int *elements, size_t size, t_stack *stack_a, t_stack *stack_b)
+static void	push_swap_init(int *elements, size_t size, t_stack *a, t_stack *b)
 {
 	size_t	i;
 
-	stack_a->stack = ft_calloc(size, sizeof(int));
-	stack_b->stack = ft_calloc(size, sizeof(int));
-	if (!stack_a->stack || !stack_b->stack)
+	a->stack = ft_calloc(size, sizeof(int));
+	b->stack = ft_calloc(size, sizeof(int));
+	if (!a->stack || !b->stack)
 		return ;
-	stack_a->top = size - 1;
-	stack_b->top = -1;
+	a->top = size - 1;
+	b->top = -1;
 	i = 0;
 	while (i < size)
 	{
-		stack_a->stack[i] = elements[i];
+		a->stack[i] = elements[i];
 		i++;
 	}
-	normalize_stack(elements, stack_a, size);
+	normalize_stack(elements, a, size);
 }
 
 int	main(int argc, char *argv[])
 {
 	int		i;
 	int		elements[argc - 1];
-	t_stack	stack_a;
-	t_stack	stack_b;
+	t_stack	a;
+	t_stack	b;
 
 	i = 1;
 	while (i < argc)
@@ -134,9 +134,9 @@ int	main(int argc, char *argv[])
 		ft_printf("Error\n");
 		return (1);
 	}
-	push_swap_init(elements, argc - 1, &stack_a, &stack_b);
-	push_swap_sort(&stack_a, &stack_b);
-	free(stack_a.stack);
-	free(stack_b.stack);
+	push_swap_init(elements, argc - 1, &a, &b);
+	push_swap_sort(&a, &b);
+	free(a.stack);
+	free(b.stack);
 	return (0);
 }

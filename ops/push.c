@@ -12,22 +12,22 @@
 
 #include "../push_swap.h"
 
-void	pa(t_stack *stack_a, t_stack *stack_b)
+void	pa(t_stack *a, t_stack *b)
 {
-	if (stack_b->top == -1)
+	if (b->top == -1)
 		return ;
-	(stack_a->top)++;
-	stack_a->stack[stack_a->top] = stack_b->stack[stack_b->top];
-	(stack_b->top)--;
+	(a->top)++;
+	a->stack[a->top] = b->stack[b->top];
+	(b->top)--;
 	ft_printf("pa\n");
 }
 
-void	pb(t_stack *stack_a, t_stack *stack_b)
+void	pb(t_stack *a, t_stack *b)
 {
-	if (stack_a->top == -1)
+	if (a->top == -1)
 		return ;
-	(stack_b->top)++;
-	stack_b->stack[stack_b->top] = stack_a->stack[stack_a->top];
-	(stack_a->top)--;
+	(b->top)++;
+	b->stack[b->top] = a->stack[a->top];
+	(a->top)--;
 	ft_printf("pb\n");
 }

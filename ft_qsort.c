@@ -32,7 +32,7 @@ void	ft_qsort(int *elements, size_t start, size_t end)
 	pivot = elements[(start + end) / 2];
 	i = start;
 	j = end;
-	while (true)
+	while (TRUE)
 	{
 		while (elements[i] < pivot)
 			i++;

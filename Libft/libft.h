@@ -13,9 +13,8 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
-#define bool _Bool
-#define false ((bool)+0)
-#define true ((bool)+1)
+# define FALSE 0
+# define TRUE 1
 
 # include <unistd.h>
 # include <stdlib.h>
