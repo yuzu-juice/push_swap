@@ -15,15 +15,15 @@
 int	ft_isnum(char *s)
 {
 	if (!s)
-		return (FALSE);
+		return (false);
 	if (*s != '-' && !ft_isdigit(*s))
-		return (FALSE);
+		return (false);
 	s++;
 	while (*s)
 	{
 		if (!ft_isdigit(*s))
-			return (FALSE);
+			return (false);
 		s++;
 	}
-	return (TRUE);
+	return (true);
 }

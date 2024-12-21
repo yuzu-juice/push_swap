@@ -57,7 +57,7 @@ int	get_largest_number_index_lt(int *stack, size_t size, int target)
 	{
 		if (stack[i] < target && stack[i] > stack[index])
 			index = i;
-			i++;
+		i++;
 	}
 	return (index);
 }
@@ -73,7 +73,7 @@ int	get_smallest_number_index_gt(int *stack, size_t size, int target)
 	{
 		if (stack[i] > target && stack[i] < stack[index])
 			index = i;
-			i++;
+		i++;
 	}
 	return (index);
 }

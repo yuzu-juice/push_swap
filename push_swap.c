@@ -18,7 +18,7 @@
 // 	int		flag;
 
 // 	i = 0;
-// 	flag = TRUE;
+// 	flag = true;
 // 	if (stack_a->top == -1)
 // 		ft_printf("stack_a is empty.\n");
 // 	while (i < size)
@@ -30,7 +30,7 @@
 // 		if ((size_t)stack_a->top == i)
 // 		{
 // 			ft_printf(" <- top");
-// 			flag = FALSE;
+// 			flag = false;
 // 		}
 // 		ft_printf("\n");
 // 		i++;
@@ -39,7 +39,7 @@
 // 	if (stack_b->top == -1)
 // 		ft_printf("stack_b is empty.\n");
 // 	i = 0;
-// 	flag = TRUE;
+// 	flag = true;
 // 	while (i < size)
 // 	{
 // 		if (flag)
@@ -49,7 +49,7 @@
 // 		if ((size_t)stack_b->top == i)
 // 		{
 // 			ft_printf(" <- top");
-// 			flag = FALSE;
+// 			flag = false;
 // 		}
 // 		ft_printf("\n");
 // 		i++;

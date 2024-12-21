@@ -12,8 +12,9 @@
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# define TRUE 1
-# define FALSE 0
+# define bool _Bool
+# define false ((bool)+0)
+# define true ((bool)+1)
 
 # include <stddef.h>
 # include <unistd.h>
@@ -27,8 +28,8 @@ typedef struct s_stack {
 }			t_stack;
 
 void	ft_qsort(int *elements, size_t start, size_t end);
-int		has_duplicates(int *elements, int size);
-int		is_valid_num(char *num);
+bool	has_duplicates(int *elements, int size);
+bool	is_valid_num(char *num);
 void	sa(t_stack *stack);
 void	sb(t_stack *stack);
 void	ss(t_stack *stack_a, t_stack *stack_b);
@@ -40,7 +41,7 @@ void	rr(t_stack *stack_a, t_stack *stack_b);
 void	rra(t_stack *stack_a);
 void	rrb(t_stack *stack_b);
 void	rrr(t_stack *stack_a, t_stack *stack_b);
-int		is_sorted(t_stack stack);
+bool	is_sorted(t_stack stack);
 void	sort_three(t_stack *stack);
 void	sort_four(t_stack *stack_a, t_stack *stack_b);
 void	sort_more_than_five(t_stack *stack_a, t_stack *stack_b);

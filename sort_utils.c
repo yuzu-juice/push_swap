@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	is_sorted(t_stack stack)
+bool	is_sorted(t_stack stack)
 {
 	int	i;
 
@@ -20,10 +20,10 @@ int	is_sorted(t_stack stack)
 	while (i < stack.top)
 	{
 		if (stack.stack[i] < stack.stack[i + 1])
-			return (FALSE);
+			return (false);
 		i++;
 	}
-	return (TRUE);
+	return (true);
 }
 
 void	sort_three(t_stack *stack)

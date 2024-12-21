@@ -32,9 +32,9 @@ static int	formats(va_list *ap, const char fmt)
 	else if (fmt == 'u')
 		return (ft_putnbr_ui(va_arg(*ap, unsigned int)));
 	else if (fmt == 'x')
-		return (ft_puthex(va_arg(*ap, int), TRUE));
+		return (ft_puthex(va_arg(*ap, int), true));
 	else if (fmt == 'X')
-		return (ft_puthex(va_arg(*ap, int), FALSE));
+		return (ft_puthex(va_arg(*ap, int), false));
 	else if (fmt == '%')
 		return (ft_putchar('%'));
 	return (-1);
