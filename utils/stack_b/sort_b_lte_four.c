@@ -33,20 +33,16 @@ static void	sort_b_three(t_stack *a, t_stack *b)
 	}
 	else if (min_num_index == 1)
 	{
-		rb(b);
-		pa(a, b);
-		rrb(b);
+		pa2(a, b);
 		sort_b_two(b);
 		pb(a, b);
 	}
 	else if (min_num_index == 0)
 	{
 		sort_b_two(b);
-		pa(a, b);
-		pa(a, b);
+		papa(a, b);
 		rb(b);
-		pb(a, b);
-		pb(a, b);
+		pbpb(a, b);
 		rrb(b);
 	}
 }

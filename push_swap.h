@@ -29,6 +29,22 @@ typedef struct s_stack
 	int	top;
 }	t_stack;
 
+typedef enum ops
+{
+	NONE,
+	SA,
+	SB,
+	SS,
+	PA,
+	PB,
+	RA,
+	RB,
+	RR,
+	RRA,
+	RRB,
+	RRR
+}	t_ops;
+
 void	ft_qsort(int *elements, size_t start, size_t end);
 _Bool	has_duplicates(int *elements, int size);
 _Bool	is_valid_num(char *num);
@@ -37,6 +53,10 @@ void	sb(t_stack *stack);
 void	ss(t_stack *a, t_stack *b);
 void	pa(t_stack *a, t_stack *b);
 void	pb(t_stack *a, t_stack *b);
+void	papa(t_stack *a, t_stack *b);
+void	pbpb(t_stack *a, t_stack *b);
+void	pa2(t_stack *a, t_stack *b);
+void	pb2(t_stack *a, t_stack *b);
 void	ra(t_stack *a);
 void	rb(t_stack *b);
 void	rr(t_stack *a, t_stack *b);

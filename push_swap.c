@@ -118,6 +118,12 @@ static void	push_swap_init(int *elements, size_t size, t_stack *a, t_stack *b)
 	normalize_stack(elements, a, size);
 }
 
+static int	print_error(void)
+{
+	ft_printf("Error\n");
+	return (1);
+}
+
 int	main(int argc, char *argv[])
 {
 	int		i;
@@ -126,28 +132,22 @@ int	main(int argc, char *argv[])
 	t_stack	b;
 
 	i = 1;
-	elements = malloc(sizeof(int) * (argc - 1));
-	if (argc == 1)
-	{
-		ft_printf("Error\n");
-		return (1);
-	}
+	elements = malloc((argc - 1) * sizeof(int));
+	if (!elements || argc == 1)
+		return (print_error());
 	while (i < argc)
 	{
 		if (!is_valid_num(argv[i]))
-			return (1);
+			return (print_error());
 		elements[argc - i - 1] = ft_atoi(argv[i]);
 		i++;
 	}
 	if (has_duplicates(elements, argc - 1))
-	{
-		ft_printf("Error\n");
-		return (1);
-	}
+		return (print_error());
 	push_swap_init(elements, argc - 1, &a, &b);
 	push_swap_sort(&a, &b);
-	free(elements);
 	free(a.stack);
 	free(b.stack);
+	free(elements);
 	return (0);
 }

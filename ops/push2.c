@@ -1,45 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   push2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: takitaga  <takitaga@student.42tokyo.>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/15 19:50:38 by takitaga          #+#    #+#             */
-/*   Updated: 2024/08/15 21:26:05 by takitaga         ###   ########.fr       */
+/*   Created: 2024/12/24 19:11:21 by takitaga          #+#    #+#             */
+/*   Updated: 2024/12/24 19:12:25 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	pa(t_stack *a, t_stack *b)
+void	pa2(t_stack *a, t_stack *b)
 {
-	if (b->top == -1)
-		return ;
-	(a->top)++;
-	a->stack[a->top] = b->stack[b->top];
-	(b->top)--;
-	ft_printf("pa\n");
-}
-
-void	pb(t_stack *a, t_stack *b)
-{
-	if (a->top == -1)
-		return ;
-	(b->top)++;
-	b->stack[b->top] = a->stack[a->top];
-	(a->top)--;
-	ft_printf("pb\n");
-}
-
-void	papa(t_stack *a, t_stack *b)
-{
+	rb(b);
 	pa(a, b);
-	pa(a, b);
+	rrb(b);
 }
 
-void	pbpb(t_stack *a, t_stack *b)
+void	pb2(t_stack *a, t_stack *b)
 {
+	ra(a);
 	pb(a, b);
-	pb(a, b);
+	rra(a);
 }

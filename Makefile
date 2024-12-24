@@ -15,7 +15,8 @@ SRCS		= push_swap.c \
 			$(OPERATIONS)/swap.c \
 			$(OPERATIONS)/push.c \
 			$(OPERATIONS)/rotate.c \
-			$(OPERATIONS)/reverse_rotate.c
+			$(OPERATIONS)/reverse_rotate.c \
+			$(OPERATIONS)/other.c
 
 OBJS	= $(SRCS:.c=.o)
 HEADERS	= push_swap.h
