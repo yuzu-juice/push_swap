@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-int	get_max_index(int *stack, size_t size)
+int	get_max_num_index(int *stack, size_t size)
 {
 	size_t	i;
 	size_t	max_index;
@@ -29,7 +29,7 @@ int	get_max_index(int *stack, size_t size)
 	return (max_index);
 }
 
-int	get_min_index(int *stack, size_t size)
+int	get_min_num_index(int *stack, size_t size)
 {
 	size_t	i;
 	size_t	min_index;
@@ -44,36 +44,4 @@ int	get_min_index(int *stack, size_t size)
 		i++;
 	}
 	return (min_index);
-}
-
-int	get_largest_num_index_lt(int *stack, size_t size, int target)
-{
-	size_t	i;
-	size_t	index;
-
-	i = 0;
-	index = i;
-	while (i < size)
-	{
-		if (stack[i] < target && stack[i] > stack[index])
-			index = i;
-		i++;
-	}
-	return (index);
-}
-
-int	get_smallest_num_index_gt(int *stack, size_t size, int target)
-{
-	size_t	i;
-	size_t	index;
-
-	i = 0;
-	index = i;
-	while (i < size)
-	{
-		if (stack[i] > target && stack[i] < stack[index])
-			index = i;
-		i++;
-	}
-	return (index);
 }

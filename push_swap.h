@@ -23,32 +23,35 @@
 # include <stdbool.h>
 # include "Libft/libft.h"
 
-typedef struct s_stack {
+typedef struct s_stack
+{
 	int	*stack;
 	int	top;
-}			t_stack;
+}	t_stack;
 
-void			ft_qsort(int *elements, size_t start, size_t end);
-_Bool			has_duplicates(int *elements, int size);
-_Bool			is_valid_num(char *num);
-void			sa(t_stack *stack);
-void			sb(t_stack *stack);
-void			ss(t_stack *a, t_stack *b);
-void			pa(t_stack *a, t_stack *b);
-void			pb(t_stack *a, t_stack *b);
-void			ra(t_stack *a);
-void			rb(t_stack *b);
-void			rr(t_stack *a, t_stack *b);
-void			rra(t_stack *a);
-void			rrb(t_stack *b);
-void			rrr(t_stack *a, t_stack *b);
-_Bool			is_sorted(t_stack stack);
-void			sort_three(t_stack *stack);
-void			sort_four(t_stack *a, t_stack *b);
-void			sort_more_than_five(t_stack *a, t_stack *b);
-unsigned int	get_max_index(int *stack, size_t size);
-unsigned int	get_min_index(int *stack, size_t size);
-unsigned int	get_largest_num_index_lt(int *stack, size_t size, int target);
-unsigned int	get_smallest_num_index_gt(int *stack, size_t size, int target);
+void	ft_qsort(int *elements, size_t start, size_t end);
+_Bool	has_duplicates(int *elements, int size);
+_Bool	is_valid_num(char *num);
+void	sa(t_stack *stack);
+void	sb(t_stack *stack);
+void	ss(t_stack *a, t_stack *b);
+void	pa(t_stack *a, t_stack *b);
+void	pb(t_stack *a, t_stack *b);
+void	ra(t_stack *a);
+void	rb(t_stack *b);
+void	rr(t_stack *a, t_stack *b);
+void	rra(t_stack *a);
+void	rrb(t_stack *b);
+void	rrr(t_stack *a, t_stack *b);
+_Bool	is_sorted(t_stack stack);
+void	sort_lte_four(t_stack *a, t_stack *b, int bottom);
+void	sort_gte_five(t_stack *a, t_stack *b, int bottom);
+int		get_pivot(int *stack, size_t start, size_t end);
+int		get_max_num_index(int *stack, size_t size);
+int		get_min_num_index(int *stack, size_t size);
+void	split_by_pivot(t_stack *a, t_stack *b);
+
+// delete later
+void	print_stack(t_stack *a, t_stack *b, size_t size);
 
 #endif

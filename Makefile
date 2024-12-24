@@ -1,10 +1,14 @@
 NAME		= push_swap
 OPERATIONS	= ops
+UTILS		= utils
 SRCS		= push_swap.c \
-			ft_qsort.c \
-			sort_utils.c \
-			get_index.c \
-			input_validation.c \
+			$(UTILS)/qsort.c \
+			$(UTILS)/sort_lte_four.c \
+			$(UTILS)/sort_gte_five.c \
+			$(UTILS)/get_index.c \
+			$(UTILS)/get_pivot.c \
+			$(UTILS)/split_by_pivot.c \
+			$(UTILS)/input_validation.c \
 			$(OPERATIONS)/swap.c \
 			$(OPERATIONS)/push.c \
 			$(OPERATIONS)/rotate.c \
