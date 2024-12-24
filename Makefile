@@ -3,12 +3,15 @@ OPERATIONS	= ops
 UTILS		= utils
 SRCS		= push_swap.c \
 			$(UTILS)/qsort.c \
-			$(UTILS)/sort_lte_four.c \
-			$(UTILS)/sort_gte_five.c \
 			$(UTILS)/get_index.c \
 			$(UTILS)/get_pivot.c \
 			$(UTILS)/split_by_pivot.c \
 			$(UTILS)/input_validation.c \
+			$(UTILS)/is_sorted.c \
+			$(UTILS)/stack_a/sort_a_lte_four.c \
+			$(UTILS)/stack_a/sort_a.c \
+			$(UTILS)/stack_b/sort_b_lte_four.c \
+			$(UTILS)/stack_b/sort_b.c \
 			$(OPERATIONS)/swap.c \
 			$(OPERATIONS)/push.c \
 			$(OPERATIONS)/rotate.c \
@@ -24,7 +27,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	cd "$(PWD)/Libft" && make && cd ..
-	$(CC) $(CFLAG) -o $(NAME) $(OBJS) $(LIBFT) -I $(HEADERS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) -I $(HEADERS)
 
 %.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
