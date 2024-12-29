@@ -16,7 +16,7 @@
 // {
 // 	size_t	i;
 // 	int		flag;
-
+//
 // 	i = 0;
 // 	flag = TRUE;
 // 	if (a->top == -1)
@@ -57,21 +57,21 @@
 // 	ft_printf("\n\n-------------------------\n\n");
 // }
 
-static void	push_swap_sort(t_stack *a, t_stack *b)
+static void	push_swap_sort(t_stack *a, t_stack *b, t_list *ops)
 {
 	if (is_sorted(*a))
 		return ;
 	if (a->top < 4)
-		sort_a_lte_four(a, b, 0);
+		sort_a_lte_four(a, b, ops);
 	if (a->top >= 4)
 	{
-		split_by_pivot(a, b);
-		sort_a(a, b, 0);
-		sort_b(a, b, 0);
+		split_by_pivot(a, b, ops);
+		sort_a(a, b, ops);
+		sort_b(a, b, ops);
 		while (b->top >= 0)
 		{
-			rrb(b);
-			pa(a, b);
+			rrb(b, ops);
+			pa(a, b, ops);
 		}
 	}
 }
@@ -99,16 +99,18 @@ static void	normalize_stack(int *elements, t_stack *a, size_t size)
 	}
 }
 
-static void	push_swap_init(int *elements, size_t size, t_stack *a, t_stack *b)
+static int	push_swap_init(int *elements, size_t size, t_stack *a, t_stack *b)
 {
 	size_t	i;
 
 	a->stack = ft_calloc(size, sizeof(int));
 	b->stack = ft_calloc(size, sizeof(int));
 	if (!a->stack || !b->stack)
-		return ;
+		return (FALSE) ;
 	a->top = size - 1;
 	b->top = -1;
+	a->bottom = 0;
+	b->bottom = 0;
 	i = 0;
 	while (i < size)
 	{
@@ -116,12 +118,7 @@ static void	push_swap_init(int *elements, size_t size, t_stack *a, t_stack *b)
 		i++;
 	}
 	normalize_stack(elements, a, size);
-}
-
-static int	print_error(void)
-{
-	ft_printf("Error\n");
-	return (1);
+	return (TRUE);
 }
 
 int	main(int argc, char *argv[])
@@ -130,7 +127,10 @@ int	main(int argc, char *argv[])
 	int		*elements;
 	t_stack	a;
 	t_stack	b;
+	t_list	ops;
 
+	ops.value = NONE;
+	ops.next = NULL;
 	i = 1;
 	elements = malloc((argc - 1) * sizeof(int));
 	if (!elements || argc == 1)
@@ -145,7 +145,9 @@ int	main(int argc, char *argv[])
 	if (has_duplicates(elements, argc - 1))
 		return (print_error());
 	push_swap_init(elements, argc - 1, &a, &b);
-	push_swap_sort(&a, &b);
+	push_swap_sort(&a, &b, &ops);
+	optimize_list(&ops);
+	print_list(&ops);
 	free(a.stack);
 	free(b.stack);
 	free(elements);

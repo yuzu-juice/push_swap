@@ -8,6 +8,8 @@ SRCS		= push_swap.c \
 			$(UTILS)/split_by_pivot.c \
 			$(UTILS)/input_validation.c \
 			$(UTILS)/is_sorted.c \
+			$(UTILS)/print_error.c \
+			$(UTILS)/list.c \
 			$(UTILS)/stack_a/sort_a_lte_four.c \
 			$(UTILS)/stack_a/sort_a.c \
 			$(UTILS)/stack_b/sort_b_lte_four.c \

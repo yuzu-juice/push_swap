@@ -12,7 +12,7 @@
 
 #include "../../push_swap.h"
 
-static size_t	partition_a(t_stack *a, t_stack *b, int bottom, int pivot)
+static size_t	partition_a(t_stack *a, t_stack *b, int pivot, t_list *ops)
 {
 	size_t	i;
 	size_t	size;
@@ -21,43 +21,43 @@ static size_t	partition_a(t_stack *a, t_stack *b, int bottom, int pivot)
 
 	pushed_count = 0;
 	ra_count = 0;
-	size = a->top - bottom + 1;
+	size = a->top - a->bottom + 1;
 	i = 0;
 	while (i++ < size)
 	{
 		if (a->stack[a->top] < pivot)
 		{
-			pb(a, b);
+			pb(a, b, ops);
 			pushed_count++;
 		}
 		else
 		{
-			ra(a);
+			ra(a, ops);
 			ra_count++;
 		}
 	}
 	while (ra_count-- > 0)
-		rra(a);
+		rra(a, ops);
 	return (pushed_count);
 }
 
-void	sort_a(t_stack *a, t_stack *b, int bottom)
+void	sort_a(t_stack *a, t_stack *b, t_list *ops)
 {
 	size_t	pushed_count;
 	size_t	size;
 	int		pivot;
 
-	size = a->top - bottom + 1;
-	pivot = get_pivot(a->stack, bottom, a->top);
+	size = a->top - a->bottom + 1;
+	pivot = get_pivot(a->stack, a->bottom, a->top);
 	if (size <= 4)
 	{
-		sort_a_lte_four(a, b, bottom);
+		sort_a_lte_four(a, b, ops);
 		return ;
 	}
-	pushed_count = partition_a(a, b, bottom, pivot);
-	sort_a(a, b, bottom);
-	bottom = a->top + 1;
+	pushed_count = partition_a(a, b, pivot, ops);
+	sort_a(a, b, ops);
+	a->bottom = a->top + 1;
 	while (pushed_count-- > 0)
-		pa(a, b);
-	sort_a(a, b, bottom);
+		pa(a, b, ops);
+	sort_a(a, b, ops);
 }

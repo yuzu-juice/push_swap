@@ -104,8 +104,6 @@ def run_tests(num_tests: int, min_size: int, max_size: int) -> None:
         print("\nAll tests passed successfully!")
         print(f"Average operations: {total_operations / num_tests:.2f}")
         print(f"Maximum operations: {max_operations}")
-        if max_operations_case:
-            print(f"Maximum operations case: {' '.join(map(str, max_operations_case))}")
 
 if __name__ == "__main__":
     # Configuration

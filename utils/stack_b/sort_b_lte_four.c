@@ -12,13 +12,13 @@
 
 #include "../../push_swap.h"
 
-static void	sort_b_two(t_stack *stack)
+static void	sort_b_two(t_stack *stack, t_list *ops)
 {
 	if (stack->stack[stack->top - 1] < stack->stack[stack->top])
-		sb(stack);
+		sb(stack, ops);
 }
 
-static void	sort_b_three(t_stack *a, t_stack *b)
+static void	sort_b_three(t_stack *a, t_stack *b, t_list *ops)
 {
 	int	tmp_stack[3];
 	int	min_num_index;
@@ -27,27 +27,27 @@ static void	sort_b_three(t_stack *a, t_stack *b)
 	min_num_index = get_min_num_index(tmp_stack, 3);
 	if (min_num_index == 2)
 	{
-		pa(a, b);
-		sort_b_two(b);
-		pb(a, b);
+		pa(a, b, ops);
+		sort_b_two(b, ops);
+		pb(a, b, ops);
 	}
 	else if (min_num_index == 1)
 	{
-		pa2(a, b);
-		sort_b_two(b);
-		pb(a, b);
+		pa2(a, b, ops);
+		sort_b_two(b, ops);
+		pb(a, b, ops);
 	}
 	else if (min_num_index == 0)
 	{
-		sort_b_two(b);
-		papa(a, b);
-		rb(b);
-		pbpb(a, b);
-		rrb(b);
+		sort_b_two(b, ops);
+		papa(a, b, ops);
+		rb(b, ops);
+		pbpb(a, b, ops);
+		rrb(b, ops);
 	}
 }
 
-static void	sort_b_four(t_stack *a, t_stack *b)
+static void	sort_b_four(t_stack *a, t_stack *b, t_list *ops)
 {
 	int	tmp_stack[4];
 	int	min_num_index;
@@ -58,27 +58,27 @@ static void	sort_b_four(t_stack *a, t_stack *b)
 	i = 0;
 	while (i < 4 - min_num_index - 1)
 	{
-		rb(b);
+		rb(b, ops);
 		i++;
 	}
-	pa(a, b);
+	pa(a, b, ops);
 	while (i > 0)
 	{
-		rrb(b);
+		rrb(b, ops);
 		i--;
 	}
-	sort_b_three(a, b);
-	pb(a, b);
+	sort_b_three(a, b, ops);
+	pb(a, b, ops);
 }
 
-void	sort_b_lte_four(t_stack *a, t_stack *b, int bottom)
+void	sort_b_lte_four(t_stack *a, t_stack *b, t_list *ops)
 {
 	if (is_sorted(*b))
 		return ;
-	if (b->top - bottom == 3)
-		sort_b_four(a, b);
-	else if (b->top - bottom == 2)
-		sort_b_three(a, b);
-	else if (b->top - bottom == 1)
-		sort_b_two(b);
+	if (b->top - b->bottom == 3)
+		sort_b_four(a, b, ops);
+	else if (b->top - b->bottom == 2)
+		sort_b_three(a, b, ops);
+	else if (b->top - b->bottom == 1)
+		sort_b_two(b, ops);
 }

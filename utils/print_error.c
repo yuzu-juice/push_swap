@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push2.c                                            :+:      :+:    :+:   */
+/*   print_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: takitaga  <takitaga@student.42tokyo.>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/24 19:11:21 by takitaga          #+#    #+#             */
-/*   Updated: 2024/12/24 19:12:25 by takitaga         ###   ########.fr       */
+/*   Created: 2024/12/27 21:26:50 by takitaga          #+#    #+#             */
+/*   Updated: 2024/12/27 21:49:35 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	pa2(t_stack *a, t_stack *b)
+static void	put_str_error(char *s)
 {
-	rb(b);
-	pa(a, b);
-	rrb(b);
+	size_t	i;
+	size_t	len;
+
+	i = 0;
+	len = ft_strlen(s);
+	while (i < len)
+	{
+		ft_putchar_fd(s[i], 2);
+		i++;
+	}
 }
 
-void	pb2(t_stack *a, t_stack *b)
+int	print_error(void)
 {
-	ra(a);
-	pb(a, b);
-	rra(a);
+	put_str_error("Error\n");
+	return (1);
 }

@@ -12,7 +12,7 @@
 
 #include "../push_swap.h"
 
-void	split_by_pivot(t_stack *a, t_stack *b)
+void	split_by_pivot(t_stack *a, t_stack *b, t_list *ops)
 {
 	int	pivot;
 	int	i;
@@ -24,9 +24,9 @@ void	split_by_pivot(t_stack *a, t_stack *b)
 	while (i < size)
 	{
 		if (a->stack[a->top] < pivot)
-			pb(a, b);
+			pb(a, b, ops);
 		else
-			ra(a);
+			ra(a, ops);
 		i++;
 	}
 }

@@ -12,16 +12,14 @@
 
 #include "../push_swap.h"
 
-void	pa2(t_stack *a, t_stack *b)
+void	pa2(t_stack *a, t_stack *b, t_list *ops)
 {
-	rb(b);
-	pa(a, b);
-	rrb(b);
+	sb(b, ops);
+	pa(a, b, ops);
 }
 
-void	pb2(t_stack *a, t_stack *b)
+void	pb2(t_stack *a, t_stack *b, t_list *ops)
 {
-	ra(a);
-	pb(a, b);
-	rra(a);
+	sa(a, ops);
+	pb(a, b, ops);
 }

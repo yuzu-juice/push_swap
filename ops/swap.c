@@ -12,38 +12,38 @@
 
 #include "../push_swap.h"
 
-void	sa(t_stack *stack)
+void	sa(t_stack *stack, t_list *ops)
 {
 	int	tmp;
-
 	if (stack->top < 1)
 	{
-		ft_printf("sa\n");
+		append_node(ops, SA);
 		return ;
 	}
 	tmp = stack->stack[stack->top];
 	stack->stack[stack->top] = stack->stack[stack->top - 1];
 	stack->stack[stack->top - 1] = tmp;
-	ft_printf("sa\n");
+
+	append_node(ops, SA);
 }
 
-void	sb(t_stack *stack)
+void	sb(t_stack *stack, t_list *ops)
 {
 	int	tmp;
 
 	if (stack->top < 1)
 	{
-		ft_printf("sb\n");
+		append_node(ops, SB);
 		return ;
 	}
 	tmp = stack->stack[stack->top];
 	stack->stack[stack->top] = stack->stack[stack->top - 1];
 	stack->stack[stack->top - 1] = tmp;
-	ft_printf("sb\n");
+	append_node(ops, SB);
 }
 
-void	ss(t_stack *a, t_stack *b)
+void	ss(t_stack *a, t_stack *b, t_list *ops)
 {
-	sa(a);
-	sb(b);
+	sa(a, ops);
+	sb(b, ops);
 }
