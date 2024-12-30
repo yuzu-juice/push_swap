@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_a_lte_four.c                                  :+:      :+:    :+:   */
+/*   sort_a_lte_three.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: takitaga  <takitaga@student.42tokyo.>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -14,44 +14,42 @@
 
 static void	sort_a_two(t_stack *a, t_list *ops)
 {
-	if (a->stack[a->top - 1] < a->stack[a->top])
+	if (a->stack[a->top] > a->stack[a->top - 1])
 		sa(a, ops);
 }
 
-static void	sort_a_three(t_stack *a, t_stack *b, t_list *ops)
+static void	sort_a_three(t_stack *a, t_list *ops)
 {
 	int	tmp_stack[3];
-	int	min_num_index;
+	int	max_index;
 
 	ft_memmove(tmp_stack, &a->stack[a->top - 2], sizeof(int) * 3);
-	min_num_index = get_min_num_index(tmp_stack, 3);
-	if (min_num_index == 2)
+	max_index = get_max_num_index(tmp_stack, 3);
+	if (max_index == 0)
+		sa(a, ops);
+	else if (max_index == 1)
 	{
-		pb(a, b, ops);
+		ra(a, ops);
 		sort_a_two(a, ops);
-		pa(a, b, ops);
+		rra(a, ops);
+		sort_a_two(a, ops);
 	}
-	else if (min_num_index == 1)
+	else if (max_index == 2)
 	{
 		sa(a, ops);
-		sort_a_three(a, b, ops);
-	}
-	else if (min_num_index == 0)
-	{
-		sort_a_two(a, ops);
-		push_n_times(pb, &(t_stacks){a, b}, ops, 2);
-		ra(a, ops);
-		push_n_times(pa, &(t_stacks){a, b}, ops, 2);
-		rra(a, ops);
+		sort_a_three(a, ops);
 	}
 }
 
-void	sort_a_lte_three(t_stack *a, t_stack *b, t_list *ops)
+void	sort_a_lte_three(t_stack *a, t_list *ops)
 {
-	if (is_sorted(a, TRUE))
+	int	size;
+
+	size = a->top - a->bottom + 1;
+	if (size <= 1)
 		return ;
-	if (a->top - a->bottom == 2)
-		sort_a_three(a, b, ops);
-	else if (a->top - a->bottom == 1)
+	else if (size == 2)
 		sort_a_two(a, ops);
+	else if (size == 3)
+		sort_a_three(a, ops);
 }

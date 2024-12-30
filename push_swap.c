@@ -62,11 +62,9 @@ int	main(int argc, char *argv[])
 		free_ops(&ops);
 		return (error());
 	}
-	// print_stack(&a, &b);
 	optimize_ops(&ops);
 	print_ops(&ops);
 	free_stack(&a, &b);
 	free_ops(&ops);
-	// system("leaks push_swap");
 	return (0);
 }

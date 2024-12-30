@@ -14,44 +14,42 @@
 
 static void	sort_b_two(t_stack *b, t_list *ops)
 {
-	if (b->stack[b->top - 1] > b->stack[b->top])
+	if (b->stack[b->top] < b->stack[b->top - 1])
 		sb(b, ops);
 }
 
-static void	sort_b_three(t_stack *a, t_stack *b, t_list *ops)
+static void	sort_b_three(t_stack *b, t_list *ops)
 {
 	int	tmp_stack[3];
-	int	max_num_index;
+	int	min_index;
 
 	ft_memmove(tmp_stack, &b->stack[b->top - 2], sizeof(int) * 3);
-	max_num_index = get_max_num_index(tmp_stack, 3);
-	if (max_num_index == 2)
+	min_index = get_min_num_index(tmp_stack, 3);
+	if (min_index == 0)
+		sb(b, ops);
+	else if (min_index == 1)
 	{
-		pa(a, b, ops);
+		rb(b, ops);
 		sort_b_two(b, ops);
-		pb(a, b, ops);
+		rrb(b, ops);
+		sort_b_two(b, ops);
 	}
-	else if (max_num_index == 1)
+	else if (min_index == 2)
 	{
 		sb(b, ops);
-		sort_b_three(a, b, ops);
-	}
-	else if (max_num_index == 0)
-	{
-		sort_b_two(b, ops);
-		push_n_times(pa, &(t_stacks){a, b}, ops, 2);
-		rb(b, ops);
-		push_n_times(pb, &(t_stacks){a, b}, ops, 2);
-		rrb(b, ops);
+		sort_b_three(b, ops);
 	}
 }
 
-void	sort_b_lte_three(t_stack *a, t_stack *b, t_list *ops)
+void	sort_b_lte_three(t_stack *b, t_list *ops)
 {
-	if (is_sorted(b, FALSE))
+	int	size;
+
+	size = b->top - b->bottom + 1;
+	if (size <= 1)
 		return ;
-	if (b->top - b->bottom == 2)
-		sort_b_three(a, b, ops);
-	else if (b->top - b->bottom == 1)
+	else if (size == 2)
 		sort_b_two(b, ops);
+	else if (size == 3)
+		sort_b_three(b, ops);
 }

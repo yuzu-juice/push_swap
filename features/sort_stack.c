@@ -17,7 +17,7 @@ _Bool	sort_stack(t_stack *a, t_stack *b, t_list *ops)
 	if (is_sorted(a, TRUE))
 		return (TRUE);
 	if (a->top < 3)
-		sort_a_lte_three(a, b, ops);
+		sort_a_lte_three(a, ops);
 	else
 	{
 		split_by_pivot(a, b, ops);
