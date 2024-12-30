@@ -46,6 +46,7 @@ void	sort_a(t_stack *a, t_stack *b, t_list *ops)
 	size_t	pushed_count;
 	size_t	size;
 	int		pivot;
+	int		tmp;
 
 	size = a->top - a->bottom + 1;
 	pivot = get_pivot(a->stack, a->bottom, a->top);
@@ -56,7 +57,9 @@ void	sort_a(t_stack *a, t_stack *b, t_list *ops)
 	}
 	pushed_count = partition_a(a, b, pivot, ops);
 	sort_a(a, b, ops);
-	a->bottom = a->top + 1;
+	tmp = b->bottom;
+	b->bottom = b->top - pushed_count + 1;
+	sort_b(a, b, ops);
+	b->bottom = tmp;
 	push_n_times(pa, &(t_stacks){a, b}, ops, pushed_count);
-	sort_a(a, b, ops);
 }
