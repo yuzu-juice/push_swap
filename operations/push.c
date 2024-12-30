@@ -31,15 +31,3 @@ void	pb(t_stack *a, t_stack *b, t_list *ops)
 	(a->top)--;
 	append_node(ops, PB);
 }
-
-void	papa(t_stack *a, t_stack *b, t_list *ops)
-{
-	pa(a, b, ops);
-	pa(a, b, ops);
-}
-
-void	pbpb(t_stack *a, t_stack *b, t_list *ops)
-{
-	pb(a, b, ops);
-	pb(a, b, ops);
-}

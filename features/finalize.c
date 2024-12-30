@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isnum.c                                         :+:      :+:    :+:   */
+/*   finalize.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: takitaga  <takitaga@student.42tokyo.>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/15 14:55:48 by takitaga          #+#    #+#             */
-/*   Updated: 2024/08/15 15:01:55 by takitaga         ###   ########.fr       */
+/*   Created: 2024/12/29 23:21:21 by takitaga          #+#    #+#             */
+/*   Updated: 2024/12/29 23:34:49 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../push_swap.h"
 
-int	ft_isnum(char *s)
+void	free_stack(t_stack *a, t_stack *b)
 {
-	if (!s)
-		return (FALSE);
-	if (*s == '-')
-		s++;
-	if (*s == '\0')
-		return (FALSE);
-	while (*s)
+	free(a->stack);
+	free(b->stack);
+}
+
+void	free_ops(t_list *ops)
+{
+	t_list	*current;
+	t_list	*next;
+
+	current = ops->next;
+	while (current)
 	{
-		if (!ft_isdigit(*s))
-			return (FALSE);
-		s++;
+		next = current->next;
+		free(current);
+		current = next;
 	}
-	return (TRUE);
+	ops->next = NULL;
 }

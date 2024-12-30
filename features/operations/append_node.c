@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   other.c                                            :+:      :+:    :+:   */
+/*   append_node.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: takitaga  <takitaga@student.42tokyo.>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/24 19:28:33 by takitaga          #+#    #+#             */
-/*   Updated: 2024/12/24 21:42:03 by takitaga         ###   ########.fr       */
+/*   Created: 2024/12/30 16:03:06 by takitaga          #+#    #+#             */
+/*   Updated: 2024/12/30 16:04:28 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../../push_swap.h"
 
-void	pa2(t_stack *a, t_stack *b, t_list *ops)
+void	append_node(t_list *ops, t_ops op)
 {
-	sb(b, ops);
-	pa(a, b, ops);
-}
+	t_list	*op_node;
+	t_list	*current;
 
-void	pb2(t_stack *a, t_stack *b, t_list *ops)
-{
-	sa(a, ops);
-	pb(a, b, ops);
+	current = ops;
+	op_node = malloc(sizeof(t_list));
+	op_node->value = op;
+	op_node->next = NULL;
+	while (current->next)
+		current = current->next;
+	current->next = op_node;
 }

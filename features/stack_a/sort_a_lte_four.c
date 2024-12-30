@@ -12,10 +12,10 @@
 
 #include "../../push_swap.h"
 
-static void	sort_a_two(t_stack *stack, t_list *ops)
+static void	sort_a_two(t_stack *a, t_list *ops)
 {
-	if (stack->stack[stack->top - 1] < stack->stack[stack->top])
-		sa(stack, ops);
+	if (a->stack[a->top - 1] < a->stack[a->top])
+		sa(a, ops);
 }
 
 static void	sort_a_three(t_stack *a, t_stack *b, t_list *ops)
@@ -33,16 +33,15 @@ static void	sort_a_three(t_stack *a, t_stack *b, t_list *ops)
 	}
 	else if (min_num_index == 1)
 	{
-		pb2(a, b, ops);
-		sort_a_two(a, ops);
-		pa(a, b, ops);
+		sa(a, ops);
+		sort_a_three(a, b, ops);
 	}
 	else if (min_num_index == 0)
 	{
 		sort_a_two(a, ops);
-		pbpb(a, b, ops);
+		push_n_times(pb, &(t_stacks){a, b}, ops, 2);
 		ra(a, ops);
-		papa(a, b, ops);
+		push_n_times(pa, &(t_stacks){a, b}, ops, 2);
 		rra(a, ops);
 	}
 }
@@ -73,7 +72,7 @@ static void	sort_a_four(t_stack *a, t_stack *b, t_list *ops)
 
 void	sort_a_lte_four(t_stack *a, t_stack *b, t_list *ops)
 {
-	if (is_sorted(*a))
+	if (is_sorted(a, TRUE))
 		return ;
 	if (a->top - a->bottom == 3)
 		sort_a_four(a, b, ops);

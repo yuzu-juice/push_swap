@@ -12,33 +12,33 @@
 
 #include "../push_swap.h"
 
-void	sa(t_stack *stack, t_list *ops)
+void	sa(t_stack *a, t_list *ops)
 {
 	int	tmp;
-	if (stack->top < 1)
+
+	if (a->top < 1)
 	{
 		append_node(ops, SA);
 		return ;
 	}
-	tmp = stack->stack[stack->top];
-	stack->stack[stack->top] = stack->stack[stack->top - 1];
-	stack->stack[stack->top - 1] = tmp;
-
+	tmp = a->stack[a->top];
+	a->stack[a->top] = a->stack[a->top - 1];
+	a->stack[a->top - 1] = tmp;
 	append_node(ops, SA);
 }
 
-void	sb(t_stack *stack, t_list *ops)
+void	sb(t_stack *b, t_list *ops)
 {
 	int	tmp;
 
-	if (stack->top < 1)
+	if (b->top < 1)
 	{
 		append_node(ops, SB);
 		return ;
 	}
-	tmp = stack->stack[stack->top];
-	stack->stack[stack->top] = stack->stack[stack->top - 1];
-	stack->stack[stack->top - 1] = tmp;
+	tmp = b->stack[b->top];
+	b->stack[b->top] = b->stack[b->top - 1];
+	b->stack[b->top - 1] = tmp;
 	append_node(ops, SB);
 }
 

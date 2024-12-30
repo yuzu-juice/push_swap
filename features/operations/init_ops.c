@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isnum.c                                         :+:      :+:    :+:   */
+/*   init_ops.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: takitaga  <takitaga@student.42tokyo.>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/15 14:55:48 by takitaga          #+#    #+#             */
-/*   Updated: 2024/08/15 15:01:55 by takitaga         ###   ########.fr       */
+/*   Created: 2024/12/29 23:04:16 by takitaga          #+#    #+#             */
+/*   Updated: 2024/12/30 16:05:54 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../push_swap.h"
 
-int	ft_isnum(char *s)
+void	init_ops(t_list *ops)
 {
-	if (!s)
-		return (FALSE);
-	if (*s == '-')
-		s++;
-	if (*s == '\0')
-		return (FALSE);
-	while (*s)
-	{
-		if (!ft_isdigit(*s))
-			return (FALSE);
-		s++;
-	}
-	return (TRUE);
+	ops->value = NONE;
+	ops->next = NULL;
 }

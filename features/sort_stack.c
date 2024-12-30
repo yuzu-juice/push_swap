@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isnum.c                                         :+:      :+:    :+:   */
+/*   sort_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: takitaga  <takitaga@student.42tokyo.>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/15 14:55:48 by takitaga          #+#    #+#             */
-/*   Updated: 2024/08/15 15:01:55 by takitaga         ###   ########.fr       */
+/*   Created: 2024/12/29 23:12:18 by takitaga          #+#    #+#             */
+/*   Updated: 2024/12/29 23:14:38 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../push_swap.h"
 
-int	ft_isnum(char *s)
+_Bool	sort_stack(t_stack *a, t_stack *b, t_list *ops)
 {
-	if (!s)
-		return (FALSE);
-	if (*s == '-')
-		s++;
-	if (*s == '\0')
-		return (FALSE);
-	while (*s)
+	if (is_sorted(a, TRUE))
+		return (TRUE);
+	if (a->top < 4)
+		sort_a_lte_four(a, b, ops);
+	else
 	{
-		if (!ft_isdigit(*s))
-			return (FALSE);
-		s++;
+		split_by_pivot(a, b, ops);
+		sort_a(a, b, ops);
+		sort_b(a, b, ops);
+		while (b->top >= 0)
+			pa(a, b, ops);
 	}
 	return (TRUE);
 }

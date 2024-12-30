@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_validation.c                                 :+:      :+:    :+:   */
+/*   validate_input.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: takitaga  <takitaga@student.42tokyo.>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/09 23:22:57 by takitaga          #+#    #+#             */
-/*   Updated: 2024/09/09 23:56:02 by takitaga         ###   ########.fr       */
+/*   Created: 2024/12/29 21:47:46 by takitaga          #+#    #+#             */
+/*   Updated: 2024/12/29 22:23:30 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-_Bool	has_duplicates(int *elements, int size)
+static _Bool	has_duplicates(int *elements, int size)
 {
 	int	i;
 	int	j;
@@ -71,17 +71,28 @@ static _Bool	is_within_int_range(const char *nptr)
 	return (FALSE);
 }
 
-_Bool	is_valid_num(char *num)
+_Bool	validate_input(int argc, char *argv[])
 {
-	if (!ft_isnum(num))
-	{
-		ft_printf("Error\n");
+	int	i;
+	int	*elements;
+
+	i = 1;
+	elements = malloc(sizeof(int) * (argc - 1));
+	if (!elements)
 		return (FALSE);
-	}
-	if (is_within_int_range(num))
-	{
-		ft_printf("Error\n");
+	if (argc <= 1)
 		return (FALSE);
+	while (i < argc)
+	{
+		if (!ft_isnum(argv[i]))
+			return (FALSE);
+		if (is_within_int_range(argv[i]))
+			return (FALSE);
+		elements[argc - i - 1] = ft_atoi(argv[i]);
+		i++;
 	}
+	if (has_duplicates(elements, argc - 1))
+		return (FALSE);
+	free(elements);
 	return (TRUE);
 }

@@ -1,24 +1,30 @@
 NAME		= push_swap
-OPERATIONS	= ops
+FEATS		= features
+OPS			= operations
 UTILS		= utils
 SRCS		= push_swap.c \
-			$(UTILS)/qsort.c \
-			$(UTILS)/get_index.c \
+			$(FEATS)/validate_input.c \
+			$(FEATS)/init_stack.c \
+			$(FEATS)/sort_stack.c \
+			$(FEATS)/stack_a/sort_a.c \
+			$(FEATS)/stack_a/sort_a_lte_four.c \
+			$(FEATS)/stack_b/sort_b.c \
+			$(FEATS)/stack_b/sort_b_lte_four.c \
+			$(FEATS)/print_ops.c \
+			$(FEATS)/finalize.c \
+			$(FEATS)/operations/init_ops.c \
+			$(FEATS)/operations/append_node.c \
+			$(FEATS)/operations/optimize.c \
 			$(UTILS)/get_pivot.c \
-			$(UTILS)/split_by_pivot.c \
-			$(UTILS)/input_validation.c \
+			$(UTILS)/ft_qsort.c \
 			$(UTILS)/is_sorted.c \
-			$(UTILS)/print_error.c \
-			$(UTILS)/list.c \
-			$(UTILS)/stack_a/sort_a_lte_four.c \
-			$(UTILS)/stack_a/sort_a.c \
-			$(UTILS)/stack_b/sort_b_lte_four.c \
-			$(UTILS)/stack_b/sort_b.c \
-			$(OPERATIONS)/swap.c \
-			$(OPERATIONS)/push.c \
-			$(OPERATIONS)/rotate.c \
-			$(OPERATIONS)/reverse_rotate.c \
-			$(OPERATIONS)/other.c
+			$(UTILS)/split_by_pivot.c \
+			$(UTILS)/get_index.c \
+			$(OPS)/swap.c \
+			$(OPS)/push.c \
+			$(OPS)/rotate.c \
+			$(OPS)/reverse_rotate.c \
+			$(OPS)/apply_n_times.c
 
 OBJS	= $(SRCS:.c=.o)
 HEADERS	= push_swap.h

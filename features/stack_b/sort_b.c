@@ -25,7 +25,7 @@ static size_t	partition_b(t_stack *a, t_stack *b, int pivot, t_list *ops)
 	i = 0;
 	while (i++ < size)
 	{
-		if (b->stack[b->top] < pivot)
+		if (b->stack[b->top] > pivot)
 		{
 			pa(a, b, ops);
 			pushed_count++;

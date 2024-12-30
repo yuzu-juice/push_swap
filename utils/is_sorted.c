@@ -12,16 +12,24 @@
 
 #include "../push_swap.h"
 
-_Bool	is_sorted(t_stack stack)
+_Bool	is_sorted(t_stack *stack, _Bool ascending)
 {
 	int	i;
 
-	i = 0;
-	while (i < stack.top)
+	i = stack->top;
+	while (i > stack->bottom)
 	{
-		if (stack.stack[i] < stack.stack[i + 1])
-			return (FALSE);
-		i++;
+		if (ascending)
+		{
+			if (stack->stack[i] > stack->stack[i - 1])
+				return (FALSE);
+		}
+		else
+		{
+			if (stack->stack[i] < stack->stack[i - 1])
+				return (FALSE);
+		}
+		i--;
 	}
 	return (TRUE);
 }
