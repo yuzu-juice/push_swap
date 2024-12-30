@@ -98,15 +98,15 @@ static _Bool	delete_rb_rrb(t_list *ops)
 
 void	optimize_ops(t_list *ops)
 {
-	_Bool	is_finished;
+	_Bool	any_changes;
 
-	is_finished = TRUE;
+	any_changes = FALSE;
 	if (delete_pa_pb(ops))
-		is_finished = FALSE;
+		any_changes = TRUE;
 	if (delete_ra_rra(ops))
-		is_finished = FALSE;
+		any_changes = TRUE;
 	if (delete_rb_rrb(ops))
-		is_finished = FALSE;
-	if (!is_finished)
+		any_changes = TRUE;
+	if (any_changes)
 		optimize_ops(ops);
 }
