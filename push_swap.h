@@ -86,7 +86,6 @@ void	free_stack(t_stack *a, t_stack *b);
 void	free_ops(t_list *ops);
 void	append_node(t_list *ops, t_ops op);
 int		get_pivot(int *stack, size_t start, size_t end);
-void	ft_qsort(int *elements, size_t start, size_t end);
 _Bool	is_sorted(t_stack *stack, _Bool ascending);
 void	split_by_pivot(t_stack *a, t_stack *b, t_list *ops);
 int		get_max_num_index(int *stack, size_t size);

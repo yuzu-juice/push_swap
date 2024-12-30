@@ -16,7 +16,6 @@ SRCS		= push_swap.c \
 			$(FEATS)/operations/append_node.c \
 			$(FEATS)/operations/optimize.c \
 			$(UTILS)/get_pivot.c \
-			$(UTILS)/ft_qsort.c \
 			$(UTILS)/is_sorted.c \
 			$(UTILS)/split_by_pivot.c \
 			$(UTILS)/get_index.c \

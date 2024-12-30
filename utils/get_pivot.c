@@ -12,24 +12,36 @@
 
 #include "../push_swap.h"
 
+static int	find_nth_element(int *stack, size_t start, size_t end, size_t n)
+{
+	size_t	i;
+	size_t	j;
+	size_t	count_less;
+	int		target;
+
+	i = start;
+	while (i <= end)
+	{
+		target = stack[i];
+		count_less = 0;
+		j = start;
+		while (j <= end)
+		{
+			if (stack[j] < target)
+				count_less++;
+			j++;
+		}
+		if (count_less == n)
+			return (target);
+		i++;
+	}
+	return (stack[start]);
+}
+
 int	get_pivot(int *stack, size_t start, size_t end)
 {
-	int		pivot;
 	size_t	size;
-	int		*tmp_stack;
 
-	if (end <= start)
-		return (-1);
 	size = end - start + 1;
-	tmp_stack = malloc(sizeof(int) * size);
-	if (!tmp_stack)
-	{
-		free(tmp_stack);
-		return (-1);
-	}
-	ft_memmove(tmp_stack, &stack[start], sizeof(int) * size);
-	ft_qsort(tmp_stack, 0, size - 1);
-	pivot = tmp_stack[size / 2];
-	free(tmp_stack);
-	return (pivot);
+	return (find_nth_element(stack, start, end, size / 2));
 }
