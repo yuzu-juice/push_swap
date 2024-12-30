@@ -108,8 +108,8 @@ def run_tests(num_tests: int, min_size: int, max_size: int) -> None:
 if __name__ == "__main__":
     # Configuration
     NUM_TESTS = 100  # Number of test cases to run
-    MIN_SIZE = 100   # Minimum array size
-    MAX_SIZE = 100   # Maximum array size
+    MIN_SIZE = 500   # Minimum array size
+    MAX_SIZE = 500   # Maximum array size
 
     # Run the tests
     run_tests(NUM_TESTS, MIN_SIZE, MAX_SIZE)

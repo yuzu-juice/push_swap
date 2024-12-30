@@ -62,6 +62,12 @@ typedef void	(*t_swap_op)(t_stack*, t_list*);
 typedef void	(*t_rot_op)(t_stack*, t_list*);
 typedef void	(*t_push_op)(t_stack*, t_stack*, t_list*);
 
+typedef struct s_rot
+{
+	t_rot_op	forward;
+	t_rot_op	reverse;
+}	t_rot;
+
 void	pa(t_stack *a, t_stack *b, t_list *ops);
 void	pb(t_stack *a, t_stack *b, t_list *ops);
 void	ra(t_stack *a, t_list *ops);
@@ -91,8 +97,15 @@ void	split_by_pivot(t_stack *a, t_stack *b, t_list *ops);
 int		get_max_num_index(int *stack, size_t size);
 int		get_min_num_index(int *stack, size_t size);
 void	optimize_ops(t_list *ops);
+_Bool	delete_pa_pb(t_list *ops);
+_Bool	delete_ra_rra(t_list *ops);
+_Bool	delete_rb_rrb(t_list *ops);
+_Bool	compress_sa_sb(t_list *ops);
+_Bool	compress_ra_pb_rra(t_list *ops);
+_Bool	compress_rb_pa_rrb(t_list *ops);
 void	push_n_times(t_push_op op, t_stacks *stacks, t_list *ops, size_t n);
 void	swap_n_times(t_swap_op op, t_stack *stack, t_list *ops, size_t n);
 void	rotate_n_times(t_rot_op op, t_stack *stack, t_list *ops, size_t n);
+void	rotate_optimally(t_stack *stack, t_list *ops, t_rot rots, size_t count);
 
 #endif

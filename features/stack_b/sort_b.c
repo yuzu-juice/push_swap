@@ -37,7 +37,7 @@ static size_t	partition_b(t_stack *a, t_stack *b, int pivot, t_list *ops)
 		}
 		i++;
 	}
-	rotate_n_times(rrb, b, ops, rb_count);
+	rotate_optimally(b, ops, (t_rot){rb, rrb}, rb_count);
 	return (pushed_count);
 }
 

@@ -15,6 +15,8 @@ SRCS		= push_swap.c \
 			$(FEATS)/operations/init_ops.c \
 			$(FEATS)/operations/append_node.c \
 			$(FEATS)/operations/optimize.c \
+			$(FEATS)/operations/optimize1.c \
+			$(FEATS)/operations/optimize2.c \
 			$(UTILS)/get_pivot.c \
 			$(UTILS)/is_sorted.c \
 			$(UTILS)/split_by_pivot.c \
@@ -23,7 +25,8 @@ SRCS		= push_swap.c \
 			$(OPS)/push.c \
 			$(OPS)/rotate.c \
 			$(OPS)/reverse_rotate.c \
-			$(OPS)/apply_n_times.c
+			$(OPS)/apply_n_times.c \
+			$(OPS)/rotate_optimally.c
 
 OBJS	= $(SRCS:.c=.o)
 HEADERS	= push_swap.h
