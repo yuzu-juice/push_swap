@@ -46,37 +46,11 @@ static void	sort_b_three(t_stack *a, t_stack *b, t_list *ops)
 	}
 }
 
-static void	sort_b_four(t_stack *a, t_stack *b, t_list *ops)
-{
-	int	tmp_stack[4];
-	int	max_num_index;
-	int	i;
-
-	ft_memmove(tmp_stack, &b->stack[b->top - 3], sizeof(int) * 4);
-	max_num_index = get_max_num_index(tmp_stack, 4);
-	i = 0;
-	while (i < 4 - max_num_index - 1)
-	{
-		rb(b, ops);
-		i++;
-	}
-	pa(a, b, ops);
-	while (i > 0)
-	{
-		rrb(b, ops);
-		i--;
-	}
-	sort_b_three(a, b, ops);
-	pb(a, b, ops);
-}
-
-void	sort_b_lte_four(t_stack *a, t_stack *b, t_list *ops)
+void	sort_b_lte_three(t_stack *a, t_stack *b, t_list *ops)
 {
 	if (is_sorted(b, FALSE))
 		return ;
-	if (b->top - b->bottom == 3)
-		sort_b_four(a, b, ops);
-	else if (b->top - b->bottom == 2)
+	if (b->top - b->bottom == 2)
 		sort_b_three(a, b, ops);
 	else if (b->top - b->bottom == 1)
 		sort_b_two(b, ops);

@@ -23,7 +23,7 @@ static size_t	partition_a(t_stack *a, t_stack *b, int pivot, t_list *ops)
 	ra_count = 0;
 	size = a->top - a->bottom + 1;
 	i = 0;
-	while (i++ < size)
+	while (i < size)
 	{
 		if (a->stack[a->top] < pivot)
 		{
@@ -35,9 +35,9 @@ static size_t	partition_a(t_stack *a, t_stack *b, int pivot, t_list *ops)
 			ra(a, ops);
 			ra_count++;
 		}
+		i++;
 	}
-	while (ra_count-- > 0)
-		rra(a, ops);
+	rotate_n_times(rra, a, ops, ra_count);
 	return (pushed_count);
 }
 
@@ -49,15 +49,14 @@ void	sort_a(t_stack *a, t_stack *b, t_list *ops)
 
 	size = a->top - a->bottom + 1;
 	pivot = get_pivot(a->stack, a->bottom, a->top);
-	if (size <= 4)
+	if (size <= 3)
 	{
-		sort_a_lte_four(a, b, ops);
+		sort_a_lte_three(a, b, ops);
 		return ;
 	}
 	pushed_count = partition_a(a, b, pivot, ops);
 	sort_a(a, b, ops);
 	a->bottom = a->top + 1;
-	while (pushed_count-- > 0)
-		pa(a, b, ops);
+	push_n_times(pa, &(t_stacks){a, b}, ops, pushed_count);
 	sort_a(a, b, ops);
 }
