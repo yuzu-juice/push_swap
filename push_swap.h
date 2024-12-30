@@ -68,6 +68,12 @@ typedef struct s_rot
 	t_rot_op	reverse;
 }	t_rot;
 
+typedef struct s_count
+{
+	size_t	push;
+	size_t	rotate;
+}	t_count;
+
 void	pa(t_stack *a, t_stack *b, t_list *ops);
 void	pb(t_stack *a, t_stack *b, t_list *ops);
 void	ra(t_stack *a, t_list *ops);

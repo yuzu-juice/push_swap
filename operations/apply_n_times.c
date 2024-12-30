@@ -14,18 +14,27 @@
 
 void	push_n_times(t_push_op op, t_stacks *stacks, t_list *ops, size_t n)
 {
-	while (n--)
+	while (n > 0)
+	{
 		op(stacks->a, stacks->b, ops);
+		n--;
+	}
 }
 
 void	swap_n_times(t_swap_op op, t_stack *stack, t_list *ops, size_t n)
 {
-	while (n--)
+	while (n > 0)
+	{
 		op(stack, ops);
+		n--;
+	}
 }
 
 void	rotate_n_times(t_rot_op op, t_stack *stack, t_list *ops, size_t n)
 {
-	while (n--)
+	while (n > 0)
+	{
 		op(stack, ops);
+		n--;
+	}
 }

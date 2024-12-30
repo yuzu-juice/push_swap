@@ -91,7 +91,7 @@ def run_tests(num_tests: int, min_size: int, max_size: int) -> None:
     print(f"Successful tests: {i+1 - len(failed_cases)}")
     print(f"Failed tests: {len(failed_cases)}")
     print(f"Total time: {end_time - start_time:.2f} seconds")
-    
+
     if failed_cases:
         print("\nFailed test cases:")
         for i, (numbers, message, operations) in enumerate(failed_cases, 1):
@@ -108,8 +108,8 @@ def run_tests(num_tests: int, min_size: int, max_size: int) -> None:
 if __name__ == "__main__":
     # Configuration
     NUM_TESTS = 100  # Number of test cases to run
-    MIN_SIZE = 500   # Minimum array size
-    MAX_SIZE = 500   # Maximum array size
+    MIN_SIZE = 100   # Minimum array size
+    MAX_SIZE = 100   # Maximum array size
 
     # Run the tests
     run_tests(NUM_TESTS, MIN_SIZE, MAX_SIZE)
