@@ -19,6 +19,8 @@ void	append_node(t_list *ops, t_ops op)
 
 	current = ops;
 	op_node = malloc(sizeof(t_list));
+	if (!op_node)
+		exit (EXIT_FAILURE);
 	op_node->value = op;
 	op_node->next = NULL;
 	while (current->next)

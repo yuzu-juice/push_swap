@@ -29,8 +29,8 @@ _Bool	delete_pa_pb(t_list *ops)
 		if ((n == PA && nn == PB) || (n == PB && nn == PA))
 		{
 			tmp = cur->next->next->next;
-			free(cur->next);
 			free(cur->next->next);
+			free(cur->next);
 			cur->next = tmp;
 			has_called = TRUE;
 		}
@@ -57,8 +57,8 @@ _Bool	delete_ra_rra(t_list *ops)
 		if ((n == RA && nn == RRA) || (n == RRA && nn == RA))
 		{
 			tmp = cur->next->next->next;
-			free(cur->next);
 			free(cur->next->next);
+			free(cur->next);
 			cur->next = tmp;
 			has_called = TRUE;
 		}
@@ -85,8 +85,8 @@ _Bool	delete_rb_rrb(t_list *ops)
 		if ((n == RB && nn == RRB) || (n == RRB && nn == RB))
 		{
 			tmp = cur->next->next->next;
-			free(cur->next);
 			free(cur->next->next);
+			free(cur->next);
 			cur->next = tmp;
 			has_called = TRUE;
 		}

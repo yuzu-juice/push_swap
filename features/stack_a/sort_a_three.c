@@ -12,6 +12,22 @@
 
 #include "../../push_swap.h"
 
+static void	sort_a_only_three(t_stack *a, t_list *ops, int stack[3])
+{
+	if (stack[0] > stack[1] && stack[0] > stack[2])
+		sort_a_two(a, ops);
+	else if (stack[2] > stack[0] && stack[2] > stack[1])
+	{
+		ra(a, ops);
+		sort_a_two(a, ops);
+	}
+	else if (stack[1] > stack[0] && stack[1] > stack[2])
+	{
+		rra(a, ops);
+		sort_a_two(a, ops);
+	}
+}
+
 void	sort_a_three(t_stack *a, t_list *ops)
 {
 	int	tmp_stack[3];
@@ -19,6 +35,11 @@ void	sort_a_three(t_stack *a, t_list *ops)
 
 	ft_memmove(tmp_stack, &a->stack[a->top - 2], sizeof(int) * 3);
 	max_index = get_max_num_index(tmp_stack, 3);
+	if (a->top == 2)
+	{
+		sort_a_only_three(a, ops, tmp_stack);
+		return ;
+	}
 	if (max_index == 0)
 		sort_a_two(a, ops);
 	else if (max_index == 1)

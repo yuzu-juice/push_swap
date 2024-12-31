@@ -12,7 +12,7 @@
 
 #include "../push_swap.h"
 
-void	rra(t_stack *a, t_list *ops)
+static void	handle_rra(t_stack *a)
 {
 	int	tmp;
 	int	i;
@@ -25,10 +25,9 @@ void	rra(t_stack *a, t_list *ops)
 		i++;
 	}
 	a->stack[a->top] = tmp;
-	append_node(ops, RRA);
 }
 
-void	rrb(t_stack *b, t_list *ops)
+static void	handle_rrb(t_stack *b)
 {
 	int	tmp;
 	int	i;
@@ -41,11 +40,39 @@ void	rrb(t_stack *b, t_list *ops)
 		i++;
 	}
 	b->stack[b->top] = tmp;
+}
+
+void	rra(t_stack *a, t_list *ops)
+{
+	if (a->top == 0)
+		return ;
+	handle_rra(a);
+	append_node(ops, RRA);
+}
+
+void	rrb(t_stack *b, t_list *ops)
+{
+	if (b->top == 0)
+		return ;
+	handle_rrb(b);
 	append_node(ops, RRB);
 }
 
 void	rrr(t_stack *a, t_stack *b, t_list *ops)
 {
-	rra(a, ops);
-	rrb(b, ops);
+	if (a->top == 0 && b->top == 0)
+		return ;
+	if (a->top == 0)
+	{
+		rrb(b, ops);
+		return ;
+	}
+	if (b->top == 0)
+	{
+		rra(a, ops);
+		return ;
+	}
+	handle_rra(a);
+	handle_rrb(b);
+	append_node(ops, RRR);
 }

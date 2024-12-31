@@ -77,7 +77,7 @@ void	sort_a(t_stack *a, t_stack *b, t_list *ops)
 		return ;
 	if (size <= 4)
 	{
-		sort_a_lte_four(a, ops);
+		sort_a_lte_four(a, b, ops);
 		return ;
 	}
 	pivot = get_pivot(a->stack, a->bottom, a->top);

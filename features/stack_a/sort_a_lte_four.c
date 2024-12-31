@@ -12,7 +12,7 @@
 
 #include "../../push_swap.h"
 
-void	sort_a_lte_four(t_stack *a, t_list *ops)
+void	sort_a_lte_four(t_stack *a, t_stack *b, t_list *ops)
 {
 	int	size;
 
@@ -24,5 +24,5 @@ void	sort_a_lte_four(t_stack *a, t_list *ops)
 	else if (size == 3)
 		sort_a_three(a, ops);
 	else if (size == 4)
-		sort_a_four(a, ops);
+		sort_a_four(a, b, ops);
 }

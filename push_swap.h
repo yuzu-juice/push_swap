@@ -16,6 +16,9 @@
 # define FALSE 0
 # define TRUE 1
 
+# define EXIT_FAILURE 1
+# define EXIT_SUCCESS 0
+
 # include <stddef.h>
 # include <unistd.h>
 # include <stdlib.h>
@@ -90,10 +93,10 @@ _Bool	init_stack(int argc, char *argv[], t_stack *a, t_stack *b);
 void	init_ops(t_list *ops);
 _Bool	sort_stack(t_stack *a, t_stack *b, t_list *ops);
 void	sort_a(t_stack *a, t_stack *b, t_list *ops);
-void	sort_a_lte_four(t_stack *a, t_list *ops);
+void	sort_a_lte_four(t_stack *a, t_stack *b, t_list *ops);
 void	sort_a_two(t_stack *a, t_list *ops);
 void	sort_a_three(t_stack *a, t_list *ops);
-void	sort_a_four(t_stack *a, t_list *ops);
+void	sort_a_four(t_stack *a, t_stack *b, t_list *ops);
 void	sort_b(t_stack *a, t_stack *b, t_list *ops);
 void	sort_b_lte_three(t_stack *b, t_list *ops);
 void	print_ops(t_list *ops);
