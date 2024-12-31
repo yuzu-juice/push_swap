@@ -12,8 +12,13 @@
 
 #include "../push_swap.h"
 
-void	free_stack(t_stack *a, t_stack *b)
+void	free_stack(t_stacks *stacks)
 {
+	t_stack	*a;
+	t_stack	*b;
+
+	a = &stacks->a;
+	b = &stacks->b;
 	free(a->stack);
 	free(b->stack);
 }

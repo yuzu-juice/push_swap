@@ -12,15 +12,15 @@
 
 #include "../../push_swap.h"
 
-static void	handle_push(t_stack *a, t_stack *b, t_list *ops, size_t *count)
+static void	handle_push(t_stacks *stacks, t_list *ops, size_t *count)
 {
-	pa(a, b, ops);
+	pa(stacks, ops);
 	(*count)++;
 }
 
-static void	handle_rotate(t_stack *b, t_list *ops, size_t *count)
+static void	handle_rotate(t_stacks *stacks, t_list *ops, size_t *count)
 {
-	rb(b, ops);
+	rb(stacks, ops);
 	(*count)++;
 }
 
@@ -39,7 +39,7 @@ static _Bool	will_not_pa(t_stack *b, size_t i, size_t size, int pivot)
 	return (true);
 }
 
-static size_t	partition_b(t_stack *a, t_stack *b, int pivot, t_list *ops)
+static size_t	partition_b(t_stacks *stacks, int pivot, t_list *ops)
 {
 	size_t	i;
 	size_t	size;
@@ -47,47 +47,47 @@ static size_t	partition_b(t_stack *a, t_stack *b, int pivot, t_list *ops)
 
 	count.push = 0;
 	count.rotate = 0;
-	size = b->top - b->bottom + 1;
+	size = stacks->b.top - stacks->b.bottom + 1;
 	i = 0;
 	while (i < size)
 	{
-		if (b->stack[b->top] > pivot)
+		if (stacks->b.stack[stacks->b.top] > pivot)
 		{
-			handle_push(a, b, ops, &count.push);
+			handle_push(stacks, ops, &count.push);
 		}
 		else
 		{
-			if (will_not_pa(b, i, size, pivot))
+			if (will_not_pa(&stacks->b, i, size, pivot))
 				break ;
-			handle_rotate(b, ops, &count.rotate);
+			handle_rotate(stacks, ops, &count.rotate);
 		}
 		i++;
 	}
-	rotate_optimally(b, ops, (t_rot){rb, rrb}, count.rotate);
+	rotate_b_opt(stacks, ops, (t_rot){rb, rrb}, count.rotate);
 	return (count.push);
 }
 
-void	sort_b(t_stack *a, t_stack *b, t_list *ops)
+void	sort_b(t_stacks *stacks, t_list *ops)
 {
 	size_t	pushed_count;
 	size_t	size;
 	int		pivot;
 	int		tmp;
 
-	size = b->top - b->bottom + 1;
-	if (is_sorted(b, false))
+	size = stacks->b.top - stacks->b.bottom + 1;
+	if (is_sorted(&stacks->b, false))
 		return ;
-	pivot = get_pivot(b->stack, b->bottom, b->top);
+	pivot = get_pivot(stacks->b.stack, stacks->b.bottom, stacks->b.top);
 	if (size <= 3)
 	{
-		sort_b_lte_three(b, ops);
+		sort_b_lte_three(stacks, ops);
 		return ;
 	}
-	pushed_count = partition_b(a, b, pivot, ops);
-	sort_b(a, b, ops);
-	tmp = a->bottom;
-	a->bottom = a->top - pushed_count + 1;
-	sort_a(a, b, ops);
-	a->bottom = tmp;
-	push_n_times(pb, &(t_stacks){a, b}, ops, pushed_count);
+	pushed_count = partition_b(stacks, pivot, ops);
+	sort_b(stacks, ops);
+	tmp = stacks->a.bottom;
+	stacks->a.bottom = stacks->a.top - pushed_count + 1;
+	sort_a(stacks, ops);
+	stacks->a.bottom = tmp;
+	apply_n_times(pb, stacks, ops, pushed_count);
 }

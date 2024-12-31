@@ -12,8 +12,11 @@
 
 #include "../../push_swap.h"
 
-void	sort_a_two(t_stack *a, t_list *ops)
+void	sort_a_two(t_stacks *stacks, t_list *ops)
 {
+	t_stack	*a;
+
+	a = &stacks->a;
 	if (a->stack[a->top] > a->stack[a->top - 1])
-		sa(a, ops);
+		sa(stacks, ops);
 }

@@ -25,21 +25,20 @@ static int	error(void)
 
 int	main(int argc, char *argv[])
 {
-	t_stack	a;
-	t_stack	b;
-	t_list	ops;
+	t_stacks	stacks;
+	t_list		ops;
 
 	if (argc == 1)
 		return (EXIT_SUCCESS);
 	if (!validate_input(argc, argv))
 		return (error());
-	if (!init_stack(argc, argv, &a, &b))
+	if (!init_stack(argc, argv, &stacks))
 		return (error());
 	init_ops(&ops);
-	sort_stack(&a, &b, &ops);
+	sort_stack(&stacks, &ops);
 	optimize_ops(&ops);
 	print_ops(&ops);
-	free_stack(&a, &b);
+	free_stack(&stacks);
 	free_ops(&ops);
 	return (EXIT_SUCCESS);
 }

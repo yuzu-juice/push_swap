@@ -12,13 +12,15 @@
 
 #include "../push_swap.h"
 
-void	split_by_pivot(t_stack *a, t_stack *b, t_list *ops)
+void	split_by_pivot(t_stacks *stacks, t_list *ops)
 {
-	int	pivot;
-	int	first_quartile;
-	int	i;
-	int	size;
+	int		pivot;
+	int		first_quartile;
+	int		i;
+	int		size;
+	t_stack	*a;
 
+	a = &stacks->a;
 	size = a->top + 1;
 	i = 0;
 	pivot = get_pivot(a->stack, 0, a->top);
@@ -27,13 +29,13 @@ void	split_by_pivot(t_stack *a, t_stack *b, t_list *ops)
 	{
 		if (a->stack[a->top] < first_quartile)
 		{
-			pb(a, b, ops);
-			rb(b, ops);
+			pb(stacks, ops);
+			rb(stacks, ops);
 		}
 		else if (a->stack[a->top] < pivot)
-			pb(a, b, ops);
+			pb(stacks, ops);
 		else
-			ra(a, ops);
+			ra(stacks, ops);
 		i++;
 	}
 }

@@ -12,44 +12,51 @@
 
 #include "../../push_swap.h"
 
-static void	sort_b_two(t_stack *b, t_list *ops)
+static void	sort_b_two(t_stacks *stacks, t_list *ops)
 {
+	t_stack	*b;
+
+	b = &stacks->b;
 	if (b->stack[b->top] < b->stack[b->top - 1])
-		sb(b, ops);
+		sb(stacks, ops);
 }
 
-static void	sort_b_three(t_stack *b, t_list *ops)
+static void	sort_b_three(t_stacks *stacks, t_list *ops)
 {
-	int	tmp_stack[3];
-	int	min_index;
+	int		tmp_stack[3];
+	int		min_index;
+	t_stack	*b;
 
+	b = &stacks->b;
 	ft_memmove(tmp_stack, &b->stack[b->top - 2], sizeof(int) * 3);
 	min_index = get_min_num_index(tmp_stack, 3);
 	if (min_index == 0)
-		sb(b, ops);
+		sb(stacks, ops);
 	else if (min_index == 1)
 	{
-		rb(b, ops);
-		sort_b_two(b, ops);
-		rrb(b, ops);
-		sort_b_two(b, ops);
+		rb(stacks, ops);
+		sort_b_two(stacks, ops);
+		rrb(stacks, ops);
+		sort_b_two(stacks, ops);
 	}
 	else if (min_index == 2)
 	{
-		sb(b, ops);
-		sort_b_three(b, ops);
+		sb(stacks, ops);
+		sort_b_three(stacks, ops);
 	}
 }
 
-void	sort_b_lte_three(t_stack *b, t_list *ops)
+void	sort_b_lte_three(t_stacks *stacks, t_list *ops)
 {
-	int	size;
+	int		size;
+	t_stack	*b;
 
+	b = &stacks->b;
 	size = b->top - b->bottom + 1;
 	if (size <= 1)
 		return ;
 	else if (size == 2)
-		sort_b_two(b, ops);
+		sort_b_two(stacks, ops);
 	else if (size == 3)
-		sort_b_three(b, ops);
+		sort_b_three(stacks, ops);
 }

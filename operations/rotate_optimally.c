@@ -12,10 +12,24 @@
 
 #include "../push_swap.h"
 
-void	rotate_optimally(t_stack *stack, t_list *ops, t_rot rots, size_t count)
+void	rotate_a_opt(t_stacks *stacks, t_list *ops, t_rot rots, size_t count)
 {
-	if ((stack->top + 1) / 2 < (int)count)
-		rotate_n_times(rots.forward, stack, ops, stack->top + 1 - count);
+	t_stack	*a;
+
+	a = &stacks->a;
+	if ((a->top + 1) / 2 < (int)count)
+		apply_n_times(rots.forward, stacks, ops, a->top + 1 - count);
 	else
-		rotate_n_times(rots.reverse, stack, ops, count);
+		apply_n_times(rots.reverse, stacks, ops, count);
+}
+
+void	rotate_b_opt(t_stacks *stacks, t_list *ops, t_rot rots, size_t count)
+{
+	t_stack	*b;
+
+	b = &stacks->b;
+	if ((b->top + 1) / 2 < (int)count)
+		apply_n_times(rots.forward, stacks, ops, b->top + 1 - count);
+	else
+		apply_n_times(rots.reverse, stacks, ops, count);
 }

@@ -42,37 +42,48 @@ static void	handle_rb(t_stack *b)
 	b->stack[0] = tmp;
 }
 
-void	ra(t_stack *a, t_list *ops)
+void	ra(t_stacks *stacks, t_list *ops)
 {
+	t_stack	*a;
+
+	a = &stacks->a;
 	if (a->top == 0)
 		return ;
 	handle_ra(a);
-	append_node(ops, RA);
+	append_node(stacks, ops, RA);
 }
 
-void	rb(t_stack *b, t_list *ops)
+void	rb(t_stacks *stacks, t_list *ops)
 {
+	t_stack	*b;
+
+	b = &stacks->b;
 	if (b->top == 0)
 		return ;
 	handle_rb(b);
-	append_node(ops, RB);
+	append_node(stacks, ops, RB);
 }
 
-void	rr(t_stack *a, t_stack *b, t_list *ops)
+void	rr(t_stacks *stacks, t_list *ops)
 {
+	t_stack	*a;
+	t_stack	*b;
+
+	a = &stacks->a;
+	b = &stacks->b;
 	if (a->top == 0 && b->top == 0)
 		return ;
 	if (a->top == 0)
 	{
-		rb(b, ops);
+		rb(stacks, ops);
 		return ;
 	}
 	if (b->top == 0)
 	{
-		ra(a, ops);
+		ra(stacks, ops);
 		return ;
 	}
 	handle_ra(a);
 	handle_rb(b);
-	append_node(ops, RR);
+	append_node(stacks, ops, RR);
 }

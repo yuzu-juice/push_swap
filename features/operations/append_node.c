@@ -12,7 +12,7 @@
 
 #include "../../push_swap.h"
 
-void	append_node(t_list *ops, t_ops op)
+void	append_node(t_stacks *stacks, t_list *ops, t_ops op)
 {
 	t_list	*op_node;
 	t_list	*current;
@@ -20,7 +20,11 @@ void	append_node(t_list *ops, t_ops op)
 	current = ops;
 	op_node = malloc(sizeof(t_list));
 	if (!op_node)
+	{
+		free_stack(stacks);
+		free_ops(ops);
 		exit (EXIT_FAILURE);
+	}
 	op_node->value = op;
 	op_node->next = NULL;
 	while (current->next)

@@ -12,17 +12,22 @@
 
 #include "../push_swap.h"
 
-void	sort_stack(t_stack *a, t_stack *b, t_list *ops)
+void	sort_stack(t_stacks *stacks, t_list *ops)
 {
+	t_stack	*a;
+	t_stack	*b;
+
+	a = &stacks->a;
+	b = &stacks->b;
 	if (is_sorted(a, true))
 		return ;
 	if (a->top < 4)
-		sort_a_lte_four(a, b, ops);
+		sort_a_lte_four(stacks, ops);
 	else
 	{
-		split_by_pivot(a, b, ops);
-		sort_a(a, b, ops);
-		sort_b(a, b, ops);
-		push_n_times(pa, &(t_stacks){a, b}, ops, b->top + 1);
+		split_by_pivot(stacks, ops);
+		sort_a(stacks, ops);
+		sort_b(stacks, ops);
+		apply_n_times(pa, stacks, ops, b->top + 1);
 	}
 }

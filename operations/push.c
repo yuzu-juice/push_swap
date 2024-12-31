@@ -12,22 +12,32 @@
 
 #include "../push_swap.h"
 
-void	pa(t_stack *a, t_stack *b, t_list *ops)
+void	pa(t_stacks *stacks, t_list *ops)
 {
+	t_stack	*a;
+	t_stack	*b;
+
+	a = &stacks->a;
+	b = &stacks->b;
 	if (b->top == -1)
 		return ;
 	(a->top)++;
 	a->stack[a->top] = b->stack[b->top];
 	(b->top)--;
-	append_node(ops, PA);
+	append_node(stacks, ops, PA);
 }
 
-void	pb(t_stack *a, t_stack *b, t_list *ops)
+void	pb(t_stacks *stacks, t_list *ops)
 {
+	t_stack	*a;
+	t_stack	*b;
+
+	a = &stacks->a;
+	b = &stacks->b;
 	if (a->top == -1)
 		return ;
 	(b->top)++;
 	b->stack[b->top] = a->stack[a->top];
 	(a->top)--;
-	append_node(ops, PB);
+	append_node(stacks, ops, PB);
 }

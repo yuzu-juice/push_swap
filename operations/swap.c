@@ -30,31 +30,42 @@ static void	handle_sb(t_stack *b)
 	b->stack[b->top - 1] = tmp;
 }
 
-void	sa(t_stack *a, t_list *ops)
+void	sa(t_stacks *stacks, t_list *ops)
 {
+	t_stack	*a;
+
+	a = &stacks->a;
 	if (a->top < 1)
 		return ;
 	handle_sa(a);
-	append_node(ops, SA);
+	append_node(stacks, ops, SA);
 }
 
-void	sb(t_stack *b, t_list *ops)
+void	sb(t_stacks *stacks, t_list *ops)
 {
+	t_stack	*b;
+
+	b = &stacks->b;
 	if (b->top < 1)
 		return ;
 	handle_sb(b);
-	append_node(ops, SB);
+	append_node(stacks, ops, SB);
 }
 
-void	ss(t_stack *a, t_stack *b, t_list *ops)
+void	ss(t_stacks *stacks, t_list *ops)
 {
+	t_stack	*a;
+	t_stack	*b;
+
+	a = &stacks->a;
+	b = &stacks->b;
 	if (a->top < 1 && b->top < 1)
 		return ;
 	if (a->top < 1)
-		sa(a, ops);
+		sa(stacks, ops);
 	if (b->top < 1)
-		sb(b, ops);
+		sb(stacks, ops);
 	handle_sa(a);
 	handle_sb(b);
-	append_node(ops, SS);
+	append_node(stacks, ops, SS);
 }
