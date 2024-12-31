@@ -21,7 +21,7 @@ _Bool	delete_pa_pb(t_list *ops)
 	_Bool	has_called;
 
 	cur = ops;
-	has_called = FALSE;
+	has_called = false;
 	while (cur && cur->next && cur->next->next)
 	{
 		n = cur->next->value;
@@ -32,7 +32,7 @@ _Bool	delete_pa_pb(t_list *ops)
 			free(cur->next->next);
 			free(cur->next);
 			cur->next = tmp;
-			has_called = TRUE;
+			has_called = true;
 		}
 		else
 			cur = cur->next;
@@ -49,7 +49,7 @@ _Bool	delete_ra_rra(t_list *ops)
 	_Bool	has_called;
 
 	cur = ops;
-	has_called = FALSE;
+	has_called = false;
 	while (cur && cur->next && cur->next->next)
 	{
 		n = cur->next->value;
@@ -60,7 +60,7 @@ _Bool	delete_ra_rra(t_list *ops)
 			free(cur->next->next);
 			free(cur->next);
 			cur->next = tmp;
-			has_called = TRUE;
+			has_called = true;
 		}
 		else
 			cur = cur->next;
@@ -77,7 +77,7 @@ _Bool	delete_rb_rrb(t_list *ops)
 	_Bool	has_called;
 
 	cur = ops;
-	has_called = FALSE;
+	has_called = false;
 	while (cur && cur->next && cur->next->next)
 	{
 		n = cur->next->value;
@@ -88,7 +88,7 @@ _Bool	delete_rb_rrb(t_list *ops)
 			free(cur->next->next);
 			free(cur->next);
 			cur->next = tmp;
-			has_called = TRUE;
+			has_called = true;
 		}
 		else
 			cur = cur->next;
@@ -105,7 +105,7 @@ _Bool	compress_sa_sb(t_list *ops)
 	_Bool	has_called;
 
 	cur = ops;
-	has_called = FALSE;
+	has_called = false;
 	while (cur && cur->next && cur->next->next)
 	{
 		n = cur->next->value;
@@ -116,7 +116,7 @@ _Bool	compress_sa_sb(t_list *ops)
 			free(cur->next->next);
 			cur->next->value = SS;
 			cur->next->next = tmp;
-			has_called = TRUE;
+			has_called = true;
 		}
 		else
 			cur = cur->next;

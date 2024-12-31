@@ -16,19 +16,19 @@ void	optimize_ops(t_list *ops)
 {
 	_Bool	any_changes;
 
-	any_changes = FALSE;
+	any_changes = false;
 	if (delete_pa_pb(ops))
-		any_changes = TRUE;
+		any_changes = true;
 	if (delete_ra_rra(ops))
-		any_changes = TRUE;
+		any_changes = true;
 	if (delete_rb_rrb(ops))
-		any_changes = TRUE;
+		any_changes = true;
 	if (compress_sa_sb(ops))
-		any_changes = TRUE;
+		any_changes = true;
 	if (compress_ra_pb_rra(ops))
-		any_changes = TRUE;
+		any_changes = true;
 	if (compress_rb_pa_rrb(ops))
-		any_changes = TRUE;
+		any_changes = true;
 	if (any_changes)
 		optimize_ops(ops);
 }

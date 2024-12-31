@@ -24,12 +24,12 @@ static _Bool	has_duplicates(int *elements, int size)
 		while (i + j + 1 < size)
 		{
 			if (elements[i] == elements[i + j + 1])
-				return (TRUE);
+				return (true);
 			j++;
 		}
 		i++;
 	}
-	return (FALSE);
+	return (false);
 }
 
 static int	check_overflow(int sign, long l, char next)
@@ -64,11 +64,11 @@ static _Bool	is_within_int_range(const char *nptr)
 		if (nptr[i] < '0' || nptr[i] > '9')
 			break ;
 		if (check_overflow(sign, ret_value, nptr[i]) != 0)
-			return (TRUE);
+			return (true);
 		ret_value = ret_value * 10 + (long)(nptr[i] - '0');
 		i++;
 	}
-	return (FALSE);
+	return (false);
 }
 
 _Bool	validate_input(int argc, char *argv[])
@@ -83,14 +83,14 @@ _Bool	validate_input(int argc, char *argv[])
 	while (i < argc)
 	{
 		if (!ft_isnum(argv[i]))
-			return (FALSE);
+			return (false);
 		if (is_within_int_range(argv[i]))
-			return (FALSE);
+			return (false);
 		elements[argc - i - 1] = ft_atoi(argv[i]);
 		i++;
 	}
 	if (has_duplicates(elements, argc - 1))
-		return (FALSE);
+		return (false);
 	free(elements);
-	return (TRUE);
+	return (true);
 }

@@ -32,11 +32,11 @@ static _Bool	will_not_pb(t_stack *a, size_t i, size_t size, int pivot)
 	while (i < size)
 	{
 		if (a->stack[a->top - iter] < pivot)
-			return (FALSE);
+			return (false);
 		i++;
 		iter++;
 	}
-	return (TRUE);
+	return (true);
 }
 
 static size_t	partition_a(t_stack *a, t_stack *b, int pivot, t_list *ops)
@@ -73,7 +73,7 @@ void	sort_a(t_stack *a, t_stack *b, t_list *ops)
 	int		tmp;
 
 	size = a->top - a->bottom + 1;
-	if (is_sorted(a, TRUE))
+	if (is_sorted(a, true))
 		return ;
 	if (size <= 4)
 	{

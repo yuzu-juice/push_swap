@@ -52,21 +52,16 @@ int	main(int argc, char *argv[])
 	t_list	ops;
 
 	if (argc == 1)
-		return (0);
+		return (EXIT_SUCCESS);
 	if (!validate_input(argc, argv))
 		return (error());
 	if (!init_stack(argc, argv, &a, &b))
 		return (error());
 	init_ops(&ops);
-	if (!sort_stack(&a, &b, &ops))
-	{
-		free_stack(&a, &b);
-		free_ops(&ops);
-		return (error());
-	}
+	sort_stack(&a, &b, &ops);
 	optimize_ops(&ops);
 	print_ops(&ops);
 	free_stack(&a, &b);
 	free_ops(&ops);
-	return (0);
+	return (EXIT_SUCCESS);
 }

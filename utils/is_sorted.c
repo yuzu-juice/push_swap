@@ -22,14 +22,14 @@ _Bool	is_sorted(t_stack *stack, _Bool ascending)
 		if (ascending)
 		{
 			if (stack->stack[i] > stack->stack[i - 1])
-				return (FALSE);
+				return (false);
 		}
 		else
 		{
 			if (stack->stack[i] < stack->stack[i - 1])
-				return (FALSE);
+				return (false);
 		}
 		i--;
 	}
-	return (TRUE);
+	return (true);
 }

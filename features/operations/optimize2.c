@@ -19,7 +19,7 @@ _Bool	compress_ra_pb_rra(t_list *ops)
 	_Bool	has_called;
 
 	cur = ops;
-	has_called = FALSE;
+	has_called = false;
 	while (cur && cur->next && cur->next->next && cur->next->next->next)
 	{
 		if (cur->next->value == RA && cur->next->next->value == PB
@@ -30,7 +30,7 @@ _Bool	compress_ra_pb_rra(t_list *ops)
 			cur->next->next->value = PB;
 			free(cur->next->next->next);
 			cur->next->next->next = tmp;
-			has_called = TRUE;
+			has_called = true;
 		}
 		else
 			cur = cur->next;
@@ -45,7 +45,7 @@ _Bool	compress_rb_pa_rrb(t_list *ops)
 	_Bool	has_called;
 
 	cur = ops;
-	has_called = FALSE;
+	has_called = false;
 	while (cur && cur->next && cur->next->next && cur->next->next->next)
 	{
 		if (cur->next->value == RB && cur->next->next->value == PA
@@ -56,7 +56,7 @@ _Bool	compress_rb_pa_rrb(t_list *ops)
 			cur->next->next->value = PA;
 			free(cur->next->next->next);
 			cur->next->next->next = tmp;
-			has_called = TRUE;
+			has_called = true;
 		}
 		else
 			cur = cur->next;

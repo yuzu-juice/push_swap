@@ -20,12 +20,12 @@ _Bool	init_stack(int argc, char *argv[], t_stack *a, t_stack *b)
 	size = argc - 1;
 	a->stack = ft_calloc(size, sizeof(int));
 	if (!a->stack)
-		return (FALSE);
+		return (false);
 	b->stack = ft_calloc(size, sizeof(int));
 	if (!b->stack)
 	{
 		free(a->stack);
-		return (FALSE);
+		return (false);
 	}
 	a->bottom = 0;
 	b->bottom = 0;
@@ -37,5 +37,5 @@ _Bool	init_stack(int argc, char *argv[], t_stack *a, t_stack *b)
 		a->stack[size - i] = ft_atoi(argv[i]);
 		i++;
 	}
-	return (TRUE);
+	return (true);
 }
