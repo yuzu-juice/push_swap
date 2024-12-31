@@ -7,7 +7,10 @@ SRCS		= push_swap.c \
 			$(FEATS)/init_stack.c \
 			$(FEATS)/sort_stack.c \
 			$(FEATS)/stack_a/sort_a.c \
-			$(FEATS)/stack_a/sort_a_lte_three.c \
+			$(FEATS)/stack_a/sort_a_lte_four.c \
+			$(FEATS)/stack_a/sort_a_two.c \
+			$(FEATS)/stack_a/sort_a_three.c \
+			$(FEATS)/stack_a/sort_a_four.c \
 			$(FEATS)/stack_b/sort_b.c \
 			$(FEATS)/stack_b/sort_b_lte_three.c \
 			$(FEATS)/print_ops.c \

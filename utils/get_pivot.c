@@ -45,3 +45,19 @@ int	get_pivot(int *stack, size_t start, size_t end)
 	size = end - start + 1;
 	return (find_nth_element(stack, start, end, size / 2));
 }
+
+int	get_first_quartile(int *stack, size_t start, size_t end)
+{
+	size_t	size;
+
+	size = end - start + 1;
+	return (find_nth_element(stack, start, end, size / 4));
+}
+
+int	get_third_quartile(int *stack, size_t start, size_t end)
+{
+	size_t	size;
+
+	size = end - start + 1;
+	return (find_nth_element(stack, start, end, (size * 3) / 4));
+}

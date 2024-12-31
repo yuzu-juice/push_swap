@@ -18,6 +18,7 @@ static void	sort_b_two(t_stack *b, t_list *ops)
 		sb(b, ops);
 }
 
+
 static void	sort_b_three(t_stack *b, t_list *ops)
 {
 	int	tmp_stack[3];
@@ -40,6 +41,7 @@ static void	sort_b_three(t_stack *b, t_list *ops)
 		sort_b_three(b, ops);
 	}
 }
+
 
 void	sort_b_lte_three(t_stack *b, t_list *ops)
 {

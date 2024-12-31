@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_stack.c                                       :+:      :+:    :+:   */
+/*   sort_a_two.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: takitaga  <takitaga@student.42tokyo.>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/29 23:12:18 by takitaga          #+#    #+#             */
-/*   Updated: 2024/12/29 23:14:38 by takitaga         ###   ########.fr       */
+/*   Created: 2024/12/31 12:46:35 by takitaga          #+#    #+#             */
+/*   Updated: 2024/12/31 12:46:47 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../../push_swap.h"
 
-_Bool	sort_stack(t_stack *a, t_stack *b, t_list *ops)
+void	sort_a_two(t_stack *a, t_list *ops)
 {
-	if (is_sorted(a, TRUE))
-		return (TRUE);
-	if (a->top < 4)
-		sort_a_lte_four(a, ops);
-	else
-	{
-		split_by_pivot(a, b, ops);
-		sort_a(a, b, ops);
-		sort_b(a, b, ops);
-		push_n_times(pa, &(t_stacks){a, b}, ops, b->top + 1);
-	}
-	return (TRUE);
+	if (a->stack[a->top] > a->stack[a->top - 1])
+		sa(a, ops);
 }

@@ -51,6 +51,8 @@ int	main(int argc, char *argv[])
 	t_stack	b;
 	t_list	ops;
 
+	if (argc == 1)
+		return (0);
 	if (!validate_input(argc, argv))
 		return (error());
 	if (!init_stack(argc, argv, &a, &b))
