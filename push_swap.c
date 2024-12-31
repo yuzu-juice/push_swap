@@ -12,28 +12,6 @@
 
 #include "push_swap.h"
 
-// static void	print_stack(t_stack *a, t_stack *b)
-// {
-// 	int	i;
-
-// 	i = a->top;
-// 	ft_printf("<stack_a>\ntop\n----------\n");
-// 	while (i >= 0)
-// 	{
-// 		ft_printf("%d: %d\n", i, a->stack[i]);
-// 		i--;
-// 	}
-// 	ft_printf("----------\nbottom\n\n");
-// 	i = b->top;
-// 	ft_printf("<stack_b>\ntop\n----------\n");
-// 	while (i >= 0)
-// 	{
-// 		ft_printf("%d: %d\n", i, b->stack[i]);
-// 		i--;
-// 	}
-// 	ft_printf("----------\nbottom\n\n");
-// }
-
 static int	error(void)
 {
 	ft_putchar_fd('E', 2);
