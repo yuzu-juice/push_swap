@@ -20,6 +20,11 @@ SRCS		= push_swap.c \
 			$(FEATS)/operations/optimize.c \
 			$(FEATS)/operations/optimize1.c \
 			$(FEATS)/operations/optimize2.c \
+			$(FEATS)/operations/optimize3.c \
+			$(FEATS)/operations/optimize4.c \
+			$(FEATS)/operations/optimize5.c \
+			$(FEATS)/operations/optimize6.c \
+			$(FEATS)/operations/optimize7.c \
 			$(UTILS)/get_pivot.c \
 			$(UTILS)/is_sorted.c \
 			$(UTILS)/split_by_pivot.c \

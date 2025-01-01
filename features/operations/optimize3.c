@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   optimize1.c                                        :+:      :+:    :+:   */
+/*   optimize3.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: takitaga  <takitaga@student.42tokyo.>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/30 16:03:12 by takitaga          #+#    #+#             */
-/*   Updated: 2024/12/31 15:37:20 by takitaga         ###   ########.fr       */
+/*   Created: 2025/01/01 00:03:55 by takitaga          #+#    #+#             */
+/*   Updated: 2025/01/01 00:11:10 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../push_swap.h"
 
-_Bool	delete_pa_pb(t_list *ops)
+_Bool	compress_sa_sb(t_list *ops)
 {
 	t_list	*cur;
 	t_list	*tmp;
@@ -26,12 +26,12 @@ _Bool	delete_pa_pb(t_list *ops)
 	{
 		n = cur->next->value;
 		nn = cur->next->next->value;
-		if ((n == PA && nn == PB) || (n == PB && nn == PA))
+		if ((n == SA && nn == SB) || (n == SB && nn == SA))
 		{
 			tmp = cur->next->next->next;
 			free(cur->next->next);
-			free(cur->next);
-			cur->next = tmp;
+			cur->next->value = SS;
+			cur->next->next = tmp;
 			has_called = true;
 		}
 		else
@@ -40,7 +40,7 @@ _Bool	delete_pa_pb(t_list *ops)
 	return (has_called);
 }
 
-_Bool	delete_ra_rra(t_list *ops)
+_Bool	compress_ra_rb(t_list *ops)
 {
 	t_list	*cur;
 	t_list	*tmp;
@@ -54,12 +54,12 @@ _Bool	delete_ra_rra(t_list *ops)
 	{
 		n = cur->next->value;
 		nn = cur->next->next->value;
-		if ((n == RA && nn == RRA) || (n == RRA && nn == RA))
+		if ((n == RA && nn == RB) || (n == RB && nn == RA))
 		{
 			tmp = cur->next->next->next;
 			free(cur->next->next);
-			free(cur->next);
-			cur->next = tmp;
+			cur->next->value = RR;
+			cur->next->next = tmp;
 			has_called = true;
 		}
 		else
@@ -68,7 +68,7 @@ _Bool	delete_ra_rra(t_list *ops)
 	return (has_called);
 }
 
-_Bool	delete_rb_rrb(t_list *ops)
+_Bool	compress_rra_rrb(t_list *ops)
 {
 	t_list	*cur;
 	t_list	*tmp;
@@ -82,12 +82,12 @@ _Bool	delete_rb_rrb(t_list *ops)
 	{
 		n = cur->next->value;
 		nn = cur->next->next->value;
-		if ((n == RB && nn == RRB) || (n == RRB && nn == RB))
+		if ((n == RRA && nn == RRB) || (n == RRB && nn == RRA))
 		{
 			tmp = cur->next->next->next;
 			free(cur->next->next);
-			free(cur->next);
-			cur->next = tmp;
+			cur->next->value = RRR;
+			cur->next->next = tmp;
 			has_called = true;
 		}
 		else

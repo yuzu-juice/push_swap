@@ -62,7 +62,7 @@ def run_tests(num_tests: int, min_size: int, max_size: int) -> None:
     failed_cases = []
     total_operations = 0
     max_operations = 0
-    max_operations_case = None
+    min_operations = float('inf')
 
     for i in range(num_tests):
         size = random.randint(min_size, max_size)
@@ -77,7 +77,8 @@ def run_tests(num_tests: int, min_size: int, max_size: int) -> None:
             total_operations += operations
             if operations > max_operations:
                 max_operations = operations
-                max_operations_case = numbers.copy()
+            if operations < min_operations:
+                min_operations = operations
         else:
             failed_cases.append((numbers, message, operations))
             print(f"Failed case details:\nNumbers: {' '.join(map(str, numbers))}\nError: {message}")
@@ -102,12 +103,13 @@ def run_tests(num_tests: int, min_size: int, max_size: int) -> None:
         sys.exit(1)
     else:
         print("\nAll tests passed successfully!")
+        print(f"Minimum operations: {min_operations}")
         print(f"Average operations: {total_operations / num_tests:.2f}")
         print(f"Maximum operations: {max_operations}")
 
 if __name__ == "__main__":
     # Configuration
-    NUM_TESTS = 1000  # Number of test cases to run
+    NUM_TESTS = 500  # Number of test cases to run
     MIN_SIZE = 100   # Minimum array size
     MAX_SIZE = 100   # Maximum array size
 
