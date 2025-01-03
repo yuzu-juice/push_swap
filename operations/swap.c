@@ -38,7 +38,8 @@ void	sa(t_stacks *stacks, t_list *ops)
 	if (a->top < 1)
 		return ;
 	handle_sa(a);
-	append_node(stacks, ops, SA);
+	if (ops)
+		append_node(stacks, ops, SA);
 }
 
 void	sb(t_stacks *stacks, t_list *ops)
@@ -49,7 +50,8 @@ void	sb(t_stacks *stacks, t_list *ops)
 	if (b->top < 1)
 		return ;
 	handle_sb(b);
-	append_node(stacks, ops, SB);
+	if (ops)
+		append_node(stacks, ops, SB);
 }
 
 void	ss(t_stacks *stacks, t_list *ops)
@@ -67,5 +69,6 @@ void	ss(t_stacks *stacks, t_list *ops)
 		sb(stacks, ops);
 	handle_sa(a);
 	handle_sb(b);
-	append_node(stacks, ops, SS);
+	if (ops)
+		append_node(stacks, ops, SS);
 }

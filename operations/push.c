@@ -24,7 +24,8 @@ void	pa(t_stacks *stacks, t_list *ops)
 	(a->top)++;
 	a->stack[a->top] = b->stack[b->top];
 	(b->top)--;
-	append_node(stacks, ops, PA);
+	if (ops)
+		append_node(stacks, ops, PA);
 }
 
 void	pb(t_stacks *stacks, t_list *ops)
@@ -39,5 +40,6 @@ void	pb(t_stacks *stacks, t_list *ops)
 	(b->top)++;
 	b->stack[b->top] = a->stack[a->top];
 	(a->top)--;
-	append_node(stacks, ops, PB);
+	if (ops)
+		append_node(stacks, ops, PB);
 }

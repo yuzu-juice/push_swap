@@ -50,7 +50,8 @@ void	ra(t_stacks *stacks, t_list *ops)
 	if (a->top == 0)
 		return ;
 	handle_ra(a);
-	append_node(stacks, ops, RA);
+	if (ops)
+		append_node(stacks, ops, RA);
 }
 
 void	rb(t_stacks *stacks, t_list *ops)
@@ -61,7 +62,8 @@ void	rb(t_stacks *stacks, t_list *ops)
 	if (b->top == 0)
 		return ;
 	handle_rb(b);
-	append_node(stacks, ops, RB);
+	if (ops)
+		append_node(stacks, ops, RB);
 }
 
 void	rr(t_stacks *stacks, t_list *ops)
@@ -85,5 +87,6 @@ void	rr(t_stacks *stacks, t_list *ops)
 	}
 	handle_ra(a);
 	handle_rb(b);
-	append_node(stacks, ops, RR);
+	if (ops)
+		append_node(stacks, ops, RR);
 }
