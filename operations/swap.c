@@ -30,45 +30,47 @@ static void	handle_sb(t_stack *b)
 	b->stack[b->top - 1] = tmp;
 }
 
-void	sa(t_stacks *stacks, t_list *ops)
+_Bool	sa(t_stacks *stacks, t_list *ops)
 {
 	t_stack	*a;
 
 	a = &stacks->a;
-	if (a->top < 1)
-		return ;
+	if (a->top - a->bottom <= 1)
+		return (false);
 	handle_sa(a);
 	if (ops)
 		append_node(stacks, ops, SA);
+	return (true);
 }
 
-void	sb(t_stacks *stacks, t_list *ops)
+_Bool	sb(t_stacks *stacks, t_list *ops)
 {
 	t_stack	*b;
 
 	b = &stacks->b;
-	if (b->top < 1)
-		return ;
+	if (b->top - b->bottom <= 1)
+	{
+		ft_printf("sb: stack b is too small\n");
+		return (false);
+	}
 	handle_sb(b);
 	if (ops)
 		append_node(stacks, ops, SB);
+	return (true);
 }
 
-void	ss(t_stacks *stacks, t_list *ops)
+_Bool	ss(t_stacks *stacks, t_list *ops)
 {
 	t_stack	*a;
 	t_stack	*b;
 
 	a = &stacks->a;
 	b = &stacks->b;
-	if (a->top < 1 && b->top < 1)
-		return ;
-	if (a->top < 1)
-		sa(stacks, ops);
-	if (b->top < 1)
-		sb(stacks, ops);
+	if (a->top - a->bottom <= 1 || b->top - b->bottom <= 1)
+		return (false);
 	handle_sa(a);
 	handle_sb(b);
 	if (ops)
 		append_node(stacks, ops, SS);
+	return (true);
 }

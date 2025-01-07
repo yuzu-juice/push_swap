@@ -16,4 +16,5 @@ void	init_ops(t_list *ops)
 {
 	ops->value = NONE;
 	ops->next = NULL;
+	ops->prev = NULL;
 }

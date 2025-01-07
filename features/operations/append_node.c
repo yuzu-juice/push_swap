@@ -12,22 +12,44 @@
 
 #include "../../push_swap.h"
 
-void	append_node(t_stacks *stacks, t_list *ops, t_ops op)
+t_list	*get_last_node(t_list *ops)
 {
-	t_list	*op_node;
 	t_list	*current;
 
 	current = ops;
+	while (current->next)
+		current = current->next;
+	return (current);
+}
+
+void	append_node(t_stacks *stacks, t_list *ops, t_ops op)
+{
+	t_list	*op_node;
+	t_list	*last_node;
+
 	op_node = malloc(sizeof(t_list));
 	if (!op_node)
 	{
-		free_stack(stacks);
-		free_ops(ops);
+		finalize(stacks, ops);
 		exit (EXIT_FAILURE);
 	}
+	last_node = get_last_node(ops);
 	op_node->value = op;
 	op_node->next = NULL;
-	while (current->next)
+	op_node->prev = last_node;
+	last_node->next = op_node;
+}
+
+
+void	remove_last_node(t_list *ops)
+{
+	t_list	*last_node;
+	t_list	*current;
+
+	last_node = get_last_node(ops);
+	current = ops;
+	while (current->next != last_node)
 		current = current->next;
-	current->next = op_node;
+	current->next = NULL;
+	free(last_node);
 }

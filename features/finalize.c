@@ -12,7 +12,7 @@
 
 #include "../push_swap.h"
 
-void	free_stack(t_stacks *stacks)
+void	free_stacks(t_stacks *stacks)
 {
 	t_stack	*a;
 	t_stack	*b;
@@ -35,5 +35,12 @@ void	free_ops(t_list *ops)
 		free(current);
 		current = next;
 	}
+	ops->value = NONE;
 	ops->next = NULL;
+}
+
+void	finalize(t_stacks *stacks, t_list *ops)
+{
+	free_stacks(stacks);
+	free_ops(ops);
 }

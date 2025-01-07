@@ -1,5 +1,7 @@
 *.o
 *.a
 push_swap
-a.out
+a.out**
 out.txt
+push-swap-pain
+push-swap-pain/*

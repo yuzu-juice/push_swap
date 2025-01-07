@@ -20,7 +20,7 @@ static int	error(void)
 	ft_putchar_fd('o', 2);
 	ft_putchar_fd('r', 2);
 	ft_putchar_fd('\n', 2);
-	return (1);
+	return (EXIT_FAILURE);
 }
 
 int	main(int argc, char *argv[])
@@ -38,7 +38,6 @@ int	main(int argc, char *argv[])
 	sort_stack(&stacks, &ops);
 	optimize_ops(&ops);
 	print_ops(&ops);
-	free_stack(&stacks);
-	free_ops(&ops);
+	finalize(&stacks, &ops);
 	return (EXIT_SUCCESS);
 }

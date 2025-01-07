@@ -53,10 +53,11 @@ typedef struct s_list
 {
 	t_ops			value;
 	struct s_list	*next;
+	struct s_list	*prev;
 }	t_list;
 
-typedef void	(*t_rot_op)(t_stacks*, t_list*);
-typedef void	(*t_op)(t_stacks*, t_list*);
+typedef _Bool	(*t_rot_op)(t_stacks*, t_list*);
+typedef _Bool	(*t_op)(t_stacks*, t_list*);
 
 typedef struct s_rot
 {
@@ -70,17 +71,17 @@ typedef struct s_count
 	size_t	rotate;
 }	t_count;
 
-void	pa(t_stacks *stacks, t_list *ops);
-void	pb(t_stacks *stacks, t_list *ops);
-void	ra(t_stacks *stacks, t_list *ops);
-void	rb(t_stacks *stacks, t_list *ops);
-void	rr(t_stacks *stacks, t_list *ops);
-void	rra(t_stacks *stacks, t_list *ops);
-void	rrb(t_stacks *stacks, t_list *ops);
-void	rrr(t_stacks *stacks, t_list *ops);
-void	sa(t_stacks *stacks, t_list *ops);
-void	sb(t_stacks *stacks, t_list *ops);
-void	ss(t_stacks *stacks, t_list *ops);
+_Bool	pa(t_stacks *stacks, t_list *ops);
+_Bool	pb(t_stacks *stacks, t_list *ops);
+_Bool	ra(t_stacks *stacks, t_list *ops);
+_Bool	rb(t_stacks *stacks, t_list *ops);
+_Bool	rr(t_stacks *stacks, t_list *ops);
+_Bool	rra(t_stacks *stacks, t_list *ops);
+_Bool	rrb(t_stacks *stacks, t_list *ops);
+_Bool	rrr(t_stacks *stacks, t_list *ops);
+_Bool	sa(t_stacks *stacks, t_list *ops);
+_Bool	sb(t_stacks *stacks, t_list *ops);
+_Bool	ss(t_stacks *stacks, t_list *ops);
 _Bool	validate_input(int argc, char *argv[]);
 _Bool	init_stack(int argc, char *argv[], t_stacks *stacks);
 void	init_ops(t_list *ops);
@@ -93,9 +94,13 @@ void	sort_a_four(t_stacks *stacks, t_list *ops);
 void	sort_b(t_stacks *stacks, t_list *ops);
 void	sort_b_lte_three(t_stacks *stacks, t_list *ops);
 void	print_ops(t_list *ops);
-void	free_stack(t_stacks *stacks);
+void	free_stacks(t_stacks *stacks);
 void	free_ops(t_list *ops);
+void	finalize(t_stacks *stacks, t_list *ops);
 void	append_node(t_stacks *stacks, t_list *ops, t_ops op);
+void	remove_last_node(t_list *ops);
+t_list	*get_last_node(t_list *ops);
+t_list	*brute_force_search(t_stacks stacks, size_t size);
 int		get_pivot(int *stack, size_t start, size_t end);
 int		get_first_quartile(int *stack, size_t start, size_t end);
 int		get_third_quartile(int *stack, size_t start, size_t end);

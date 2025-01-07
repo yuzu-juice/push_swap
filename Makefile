@@ -1,4 +1,5 @@
 NAME		= push_swap
+LIB_NAME	= $(NAME).a
 FEATS		= features
 OPS			= operations
 UTILS		= utils
@@ -15,6 +16,7 @@ SRCS		= push_swap.c \
 			$(FEATS)/stack_b/sort_b_lte_three.c \
 			$(FEATS)/print_ops.c \
 			$(FEATS)/finalize.c \
+			$(FEATS)/brute_force_search.c \
 			$(FEATS)/operations/init_ops.c \
 			$(FEATS)/operations/append_node.c \
 			$(FEATS)/operations/optimize.c \
@@ -44,16 +46,22 @@ LIBFT = Libft/libft.a
 
 all: $(NAME)
 
+lib: $(OBJS)
+	ar rcs $(LIB_NAME) $(OBJS)
+	ranlib $(LIB_NAME)
+
 $(NAME): $(OBJS)
 	cd "$(PWD)/Libft" && make && cd ..
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) -I $(HEADERS)
 
 %.o: %.c $(HEADERS)
+	# $(CC) $(CFLAGS) -c $< -o $@
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	cd "$(PWD)/Libft" && make clean && cd ..
 	rm -f $(OBJS)
+	rm -f $(LIB_NAME)
 
 fclean: clean
 	cd "$(PWD)/Libft" && make fclean && cd ..
