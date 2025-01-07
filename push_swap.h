@@ -18,7 +18,7 @@
 # include <stdlib.h>
 # include <limits.h>
 # include <stdbool.h>
-# include "Libft/libft.h"
+# include "../libft/libft.h"
 
 typedef enum e_ops
 {

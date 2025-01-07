@@ -43,23 +43,23 @@ OBJS	= $(SRCS:.c=.o)
 HEADERS	= push_swap.h
 CC	= cc
 CFLAGS	= -Wall -Wextra -Werror
-LIBFT = Libft/libft.a
+LIBFT = ../libft/libft.a
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	cd "$(PWD)/Libft" && make && cd ..
+	cd "$(PWD)/../Libft" && make && cd ..
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) -I $(HEADERS)
 
 %.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	cd "$(PWD)/Libft" && make clean && cd ..
+	cd "$(PWD)/../Libft" && make clean && cd ..
 	rm -f $(OBJS)
 
 fclean: clean
-	cd "$(PWD)/Libft" && make fclean && cd ..
+	cd "$(PWD)/../Libft" && make fclean && cd ..
 	rm -f $(NAME)
 
 re: fclean all
