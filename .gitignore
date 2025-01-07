@@ -2,4 +2,6 @@
 *.a
 push_swap
 a.out
-out.txt
+out*.txt
+pain.sh
+push-swap-pain*

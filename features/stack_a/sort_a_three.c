@@ -53,7 +53,7 @@ void	sort_a_three(t_stacks *stacks, t_list *ops)
 
 	a = &stacks->a;
 	ft_memmove(tmp_stack, &a->stack[a->top - 2], sizeof(int) * 3);
-	if (a->top == 2)
+	if (a->top == 2 && a->bottom == 0)
 	{
 		sort_a_only_three(stacks, ops, tmp_stack);
 		return ;

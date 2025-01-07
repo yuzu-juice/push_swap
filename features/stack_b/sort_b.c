@@ -78,9 +78,9 @@ void	sort_b(t_stacks *stacks, t_list *ops)
 	if (is_sorted(&stacks->b, false))
 		return ;
 	pivot = get_pivot(stacks->b.stack, stacks->b.bottom, stacks->b.top);
-	if (size <= 3)
+	if (size <= 4)
 	{
-		sort_b_lte_three(stacks, ops);
+		sort_b_lte_four(stacks, ops);
 		return ;
 	}
 	pushed_count = partition_b(stacks, pivot, ops);
