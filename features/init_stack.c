@@ -20,12 +20,12 @@ _Bool	init_stack(int argc, char *argv[], t_stacks *stacks)
 	size = argc - 1;
 	stacks->a.stack = ft_calloc(size, sizeof(int));
 	if (!stacks->a.stack)
-		return (false);
+		exit (EXIT_FAILURE);
 	stacks->b.stack = ft_calloc(size, sizeof(int));
 	if (!stacks->b.stack)
 	{
 		free(stacks->a.stack);
-		return (false);
+		exit (EXIT_FAILURE);
 	}
 	stacks->a.bottom = 0;
 	stacks->b.bottom = 0;
