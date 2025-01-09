@@ -29,7 +29,7 @@ int	main(int argc, char *argv[])
 	t_list		ops;
 
 	if (argc == 1)
-		return (EXIT_SUCCESS);
+		return (0);
 	if (!validate_input(argc, argv))
 		return (error());
 	if (!init_stack(argc, argv, &stacks))
@@ -40,5 +40,5 @@ int	main(int argc, char *argv[])
 	print_ops(&ops);
 	free_stack(&stacks);
 	free_ops(&ops);
-	return (EXIT_SUCCESS);
+	return (0);
 }
