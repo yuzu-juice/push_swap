@@ -18,7 +18,7 @@ void	append_node(t_stacks *stacks, t_list *ops, t_ops op)
 	t_list	*current;
 
 	current = ops;
-	op_node = malloc(sizeof(t_list));
+	op_node = ft_calloc(1, sizeof(t_list));
 	if (!op_node)
 	{
 		free_stack(stacks);

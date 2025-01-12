@@ -77,7 +77,7 @@ _Bool	validate_input(int argc, char *argv[])
 	int	*elements;
 
 	i = 1;
-	elements = malloc(sizeof(int) * (argc - 1));
+	elements = ft_calloc(argc - 1, sizeof(int));
 	if (!elements)
 		exit (EXIT_FAILURE);
 	while (i < argc)
