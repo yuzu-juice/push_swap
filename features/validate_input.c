@@ -82,15 +82,19 @@ _Bool	validate_input(int argc, char *argv[])
 		exit (EXIT_FAILURE);
 	while (i < argc)
 	{
-		if (!ft_isnum(argv[i]))
+		if (!ft_isnum(argv[i]) || is_within_int_range(argv[i]))
+		{
+			free(elements);
 			return (false);
-		if (is_within_int_range(argv[i]))
-			return (false);
+		}
 		elements[argc - i - 1] = ft_atoi(argv[i]);
 		i++;
 	}
 	if (has_duplicates(elements, argc - 1))
+	{
+		free(elements);
 		return (false);
+	}
 	free(elements);
 	return (true);
 }
